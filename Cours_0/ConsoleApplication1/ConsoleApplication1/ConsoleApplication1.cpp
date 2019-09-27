@@ -23,6 +23,27 @@ Vec3 incrX(Vec3 _in)
 	temp.y++;
 	return stackOverFlow(temp);
 }*/
+
+int Strlen(const char *src)
+{
+	int counter = 0;
+	for (int k = 0; src[k] != 0; k++)
+		{
+		counter++;
+		}
+	return counter;
+}
+int Strcpy(char * dest, const char * src)
+{
+	int i = 0;
+	for (i; i != Strlen(src); i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i + 1] = 0;
+	return 0;
+}
+
 int main()
 {
 
@@ -69,7 +90,7 @@ int main()
 	printf("%c\n", *ptr);
 	*/
 
-	auto start = std::chrono::system_clock::now();
+	/*auto start = std::chrono::system_clock::now();
 	int * BigBlock = (int*) malloc(1024 * 1204 * 1024);
 	for (int k = 0; k < 64 * 1024 * 1024; k++)
 	{
@@ -79,6 +100,25 @@ int main()
 	auto end = std::chrono::system_clock::now();
 	auto millis = std::chrono::duration_cast <std::chrono::milliseconds>(end - start).count();
 	printf("time ? : %d\n", millis);
+	int _i = 0;*/
+
+	//Vec3 Tableau[16];
+	//Vec3 *Tableau0 = (Vec3*)malloc(sizeof(Vec3) * 16); // Add memory C
+	//memset(Tableau, 0, sizeof(Vec3) * 16);
+	//Vec3 *Tableau1 = (Vec3*)calloc(sizeof(Vec3) , 16);
+	//Vec3 *Tableau2 = new Vec3[16]; // Add memory C++
+
+	//Vec3 * UnSeulVec = new Vec3(); // c++ allocation dynamique
+	//Vec3 UnSeulVecMaisSurLeTas = Vec3(); //c++ allocation statique
+
+
+	const char * source = "mon lapin est dodu";
+	char * dest = (char*)calloc(1024, sizeof(char));
+	Strcpy(dest, source);
+
+	printf("dest value:%s \n len:%d \n", dest, Strlen(source));
+
+
 	int _i = 0;
 }
 //Debug.Log(monobjet)

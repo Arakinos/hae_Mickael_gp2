@@ -38,5 +38,6 @@ class Player
 {
 public:
 	IDENTIFIANT KeyId;
+	IDENTIFIANT MonpasseportId;
 
 };
