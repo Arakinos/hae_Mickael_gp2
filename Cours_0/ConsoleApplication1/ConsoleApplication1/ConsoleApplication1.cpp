@@ -2,12 +2,47 @@
 //
 
 #include "pch.h"
-#include <iostream>
+//#include <iostream>
+#include <cstdlib>
+#include <cstdio>
 
+int appel(int & s)
+{
+	s++;
+	return s;
+}
+Vec3 incrX(Vec3 _in)
+{
+	_in.x++;
+	return _in;
+}
 int main()
 {
-    std::cout << "Hello World!\n"; 
+
+	int x = 66;
+	appel(x);
+	printf("xval = %d\n", x);
+	Vec3 toto = { 1,2,3};
+	incrX(toto);
+	printf("xval = %f \n", toto.x);
 }
+//Debug.Log(monobjet)
+//std::cout << "Hello World!\n"; 
+/*int foo = 0;
+const char * label = "Sapin";
+const char label2[6] = { 's','a','p','i','n', 0 };
+float v = 0.5f;
+double Dou = 0.5;
+printf("Hello world this is a test : %d label : %s Float : %f\n", foo, label,66.66f);
+printf("float : %f double %f\n", v, Dou);
+printf("Hello World : l2: %s\n", label2);
+
+const char	labelbug[5] = { 's','a','p','i','n' };
+printf("Hello World : lb: %s\n", labelbug);*/
+
+
+
+
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
 // Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
