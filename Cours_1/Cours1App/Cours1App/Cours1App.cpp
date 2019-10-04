@@ -224,8 +224,53 @@ int Add_3(int a, int b)
 		return 1 + Add_3(a - 1, b);
 	}
 }
+int Sub(int a, int b)
+{
+	printf("A:%i B:%i\n", a, b);
+	if (b == 0)
+	{
+		return a;
+	}
+	else if (b>0)
+	{
+		return(Sub(a - 1, b - 1));
+	}
+	else if (b < 0)
+	{
+		return(Sub(a + 1, b + 1));
+	}
+}
+int Mul(int a, int b)
+{
+	if (a == 0)
+	{
+		return 0;
+	}
+	if (b == 0)
+	{
+		return 0;
+	}
+	if (a == 1)
+	{
+		return b;
+	}
+	if (b == 1)
+		return a;
+	if (b > 0)
+	{
+		return a + Mul(a, b - 1);
+	}
+	if (b < 0)
+	{
+		return -Mul(a, -b);
+	}
+}
 void TestRec()
 {
 	int i = 0;
 	printf("5+6 = %d\n",Add_2(5,6));
+	int a = -4;
+	int b = -6;
+	printf("(%i) - (%i) = %d\n",a,b,Sub(a,b));
+	printf("(%i) x (%i) = %d\n",a,b,Mul(a,b));
 }
