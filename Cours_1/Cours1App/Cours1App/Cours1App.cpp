@@ -289,9 +289,104 @@ int Divid(int a, int b)
 		return -Divid(-a, b);
 	}
 }
+/*int Div_Mod(int a, int b, int * rest)
+{
+	if (a == 0)
+	{
+		*rest;
+		return 0;
+	}
+	if (b < 0 && a < 0)
+	{
+		int SubRest = 0;
+		int DivRem = -Div_Mod(a, b, &SubRest);
+		*rest = -SubRest;
+		return DivRem;
+	}
+	if (a < 0)
+	{
+		int Subrest = 0;
+		int DivRem = -Div_Mod(-a, b, rest);
+		*rest = -Subrest;
+		return DivRem;
+	}
+}*/
 int Modulo(int a, int b)
 {
 	return a - Mul(b, Divid(a, b));
+}
+
+int StrlenRec(const char *src)
+{
+	if (*src == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1 + StrlenRec(src + 1);
+	}
+}
+void StrcpyRec(char * dest, const char * src)
+{
+	*dest = *src;
+	if (*src == 0)
+	{
+		return;
+	}	
+	return StrcpyRec(dest + 1, src + 1);
+}
+void ZeroMemoryRec(char * Dest, int size)
+{
+	if (size == 0)
+	{
+		return;
+	}
+	*Dest = 0;
+	return ZeroMemoryRec(Dest + 1, size - 1);
+}
+void MemcpyRec(char * dest, char * src, int size)
+{
+	if (size == 0)
+	{
+		return;
+	}
+	*dest = *src;
+	return MemcpyRec(dest +1, src +1, size-1);
+}
+
+int StrCmpRec(char * meule, char * Aiguille)
+{
+	if (*meule == 0 && *Aiguille == 0)
+	{
+		return 0;
+	}
+	if (*meule == 0)
+	{
+		return 1;
+	}
+	if (*Aiguille == 0)
+	{
+		return -1;
+	}
+	if (*meule < *Aiguille)
+	{
+		return 1;
+	}
+	if (*meule > *Aiguille)
+	{
+		return -1;
+	}
+	return StrCmpRec(meule + 1, Aiguille + 1);
+}
+void StrCatRec(char * str0, char * str1)
+{
+	if (*str1 != 0)
+	{
+		*str0 = *str1;
+	}
+	return StrCatRec(str0 + StrlenRec(str0) + 1, str1 -1);
+
 }
 void TestRec()
 {
@@ -299,8 +394,25 @@ void TestRec()
 	printf("5+6 = %d\n",Add_2(5,6));
 	int a = 12;
 	int b = 5;
+	const char Alpha[1024] = "Alpha";
+	char Beta[1024] = "Beta";
 	printf("(%i) - (%i) = %d\n",a,b,Sub(a,b));
 	printf("(%i) x (%i) = %d\n",a,b,Mul(a,b));
 	printf("(%i) / (%i) = %d\n",a,b,Divid(a,b));
 	printf("(%i) / (%i) = %d.%d\n",a,b,Divid(a,b),Modulo(a,b));
+	printf("Sapin lenght = %d\n ",StrlenRec("Sapin"));
+	StrcpyRec(Beta, Alpha);
+	printf("Beta = %s\n",Beta);
+	int Szbuff = 32;
+	char * Buffer = (char*)malloc(Szbuff +1);
+	Buffer[32] = 'X';
+	ZeroMemoryRec(Buffer, StrlenRec(Buffer));
+	printf("%s\n", Buffer);
+	MemcpyRec(Buffer, Beta, Szbuff);
+	printf("%s\n", Buffer);
+	char Texte[32] = "Je suis un texte";
+	char mot[32] = "texte";
+	printf("%i\n",StrCmpRec(Texte,mot));
+	StrCatRec(Buffer, mot);
+	//printf("%s\n",StrCatRec(Buffer,mot));
 }
