@@ -63,6 +63,89 @@
 	 }
 	 return-1;
  }
+ /*char * strstr2(char * MeuleDeFoin, char* Aiguille)
+ {
+	 for (int i = 0; i < strlen(MeuleDeFoin); i++)
+	 {
+		 if (MeuleDeFoin[i] == Aiguille[0])
+		 {
+			 for (int y = 0; y < strlen(Aiguille); y++)
+			 {
+				 int test = strlen(Aiguille);
+				 if (MeuleDeFoin[i + y] == Aiguille[y])
+				 {
+					 continue;
+				 }
+				 if (y == test - 1)
+				 {
+					 return 0 ;
+				 }
+			 }
+		 }
+	 }
+	 return NULL;
+ }*/
+ char * StrStr2(char*MeuleDeFoin, char*aiguille)
+ {
+	 int lenMeul = strlen(MeuleDeFoin);
+	 int lenAiguille = strlen(aiguille);
+
+	 for (int i = 0; i < lenMeul; i++)
+	 {
+		 bool found = true;
+		 for (int j = 0; j < lenAiguille; ++j)
+		 {
+			 if (MeuleDeFoin[j] != aiguille[j])
+			 {
+				 found = false;
+				 break;
+			 }
+		 }
+		 if (found)
+		 {
+			 return MeuleDeFoin;
+		 }
+		 MeuleDeFoin++;
+	 }
+	 return nullptr;
+ }
+ int Max(int a, int b)
+ {
+	 return(a < b ? a : b);
+ }
+ int Min(int a, int b)
+ {
+	 return (a < b ? b : a);
+ }
+ int Strcmp(char * meule, char * Aiguille)
+ {
+	 int LenMeul = strlen(meule);
+	 int AigLeng = strlen(Aiguille);
+
+	 int MaxLen = Max(LenMeul, AigLeng);
+	 int Minlen = Min(LenMeul, AigLeng);
+
+	 for (int i = 0; i < Minlen; i++)
+	 {
+		 if(meule[i]<Aiguille[i])
+			 {
+				 return-1;
+			 }
+		 else if (meule[i] > Aiguille[i])
+		 {
+			 return 1;
+		 }
+	 }
+	 if (Minlen == MaxLen)
+	 {
+		 return 0;
+	 }
+	 if (MaxLen == LenMeul)
+	 {
+		 return 1;
+	 }
+	 return -1;
+ }
 
 
 int main()
@@ -76,4 +159,19 @@ int main()
 	Memcpy2(Licorne, Vomi, strlen(Licorne+1));
 	printf("Licorne = %s\n ", Licorne);
 	printf("position Chat = %d\n", StrChr2(Grange, Chat));
+	char Alpha[32] = "Licorne";
+	char beta[32] = "Lico";
+	printf("case 1 = %d\n", Strcmp(Alpha,beta));
+	char Alpha1[32] = "Licorne";
+	char beta1[32] = "Licorne noire";
+	printf("case 1 = %d\n", Strcmp(Alpha1, beta1));
+	char Alpha2[32] = "Licorne";
+	char beta2[32] = "Licorne";
+	printf("case 1 = %d\n", Strcmp(Alpha2, beta2));
+	char text[32] = "Lorem ipsum dolor sit amet";
+	char token[1024] = "dolor";
+	char * tokeninText = StrStr2(text, token);
+	int pos = (int)(tokeninText - text);
+	printf("lorem = %s\n", tokeninText);
+	printf("Le token est en position %d\n", pos);
 }
