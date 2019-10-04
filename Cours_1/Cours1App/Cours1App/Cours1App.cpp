@@ -39,16 +39,29 @@
  }
  int StrChr2(char * grg, char Chat)
  {
-	 int i = 0;
-	 while (i < strlen(grg))
+	 char * oldGrange = grg;
+	 while (*grg)
 	 {
-		 if (grg[i] == Chat)
+		 if (*grg == Chat)
 		 {
-			 return(i+1);
+			 return ((int)(grg-oldGrange));
 		 }
-		 i++;
+		 grg++;
 	 }
 	 return(-1);
+ }
+ int StrChr3(char * grg, char Chat)
+ {
+	 int counter = 0;
+	 while (grg[counter] != 0)
+	 {
+		 if (grg[counter] == Chat)
+		 {
+			 return counter;
+		 }
+		 counter++;
+	 }
+	 return-1;
  }
 
 
