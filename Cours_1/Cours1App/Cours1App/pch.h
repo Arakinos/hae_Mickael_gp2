@@ -1,14 +1,13 @@
-// Conseils pour bien dÃ©marrerÂ : 
-//   1. Utilisez la fenÃªtre Explorateur de solutions pour ajouter des fichiers et les gÃ©rer.
-//   2. Utilisez la fenÃªtre Team Explorer pour vous connecter au contrÃ´le de code source.
-//   3. Utilisez la fenÃªtre Sortie pour voir la sortie de la gÃ©nÃ©ration et d'autres messages.
-//   4. Utilisez la fenÃªtre Liste d'erreurs pour voir les erreurs.
-//   5. AccÃ©dez Ã  ProjetÂ > Ajouter un nouvel Ã©lÃ©ment pour crÃ©er des fichiers de code, ou Ã  ProjetÂ > Ajouter un Ã©lÃ©ment existant pour ajouter des fichiers de code existants au projet.
-//   6. Pour rouvrir ce projet plus tard, accÃ©dez Ã  FichierÂ > OuvrirÂ > Projet et sÃ©lectionnez le fichier .sln.
+// Conseils pour bien démarrer : 
+//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
+//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
+//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
+//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
+//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
+//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.
 
 #ifndef PCH_H
 #define PCH_H
 
-// TODO: Ajoutez les en-tÃªtes Ã  prÃ©compiler ici
-
+// TODO: Ajoutez les en-têtes à précompiler ici
 #endif //PCH_H

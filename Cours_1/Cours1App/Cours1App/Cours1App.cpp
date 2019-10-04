@@ -4,8 +4,9 @@
 #include "pch.h"
 #include <iostream>
 
+static void TestRec();
 
- int Memcpy(char * dest, char * src, int size)
+ /*int Memcpy(char * dest, char * src, int size)
 {
 	int i = 0;
 	for (i; i != size; i++)
@@ -63,7 +64,7 @@
 	 }
 	 return-1;
  }
- /*char * strstr2(char * MeuleDeFoin, char* Aiguille)
+ char * strstr2(char * MeuleDeFoin, char* Aiguille)
  {
 	 for (int i = 0; i < strlen(MeuleDeFoin); i++)
 	 {
@@ -84,7 +85,7 @@
 		 }
 	 }
 	 return NULL;
- }*/
+ }
  char * StrStr2(char*MeuleDeFoin, char*aiguille)
  {
 	 int lenMeul = strlen(MeuleDeFoin);
@@ -145,12 +146,13 @@
 		 return 1;
 	 }
 	 return -1;
- }
+ }*/
+
 
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    /*std::cout << "Hello World!\n";
 	char Licorne[32] = "Licorne";
 	char Vomi[32] = "Vomi";
 	char Chat = 'C';
@@ -173,5 +175,57 @@ int main()
 	char * tokeninText = StrStr2(text, token);
 	int pos = (int)(tokeninText - text);
 	printf("lorem = %s\n", tokeninText);
-	printf("Le token est en position %d\n", pos);
+	printf("Le token est en position %d\n", pos);*/
+	TestRec();
+}
+int Add(int a, int b)
+{
+	int i = 0;
+	for (i = 0; i < a + b; ++i)
+	{
+		return i;
+	}
+}
+int Add_1(int a, int b)
+{
+	int val = a;
+	for (int i = 0; i < b; ++i)
+	{
+		val++;
+	}
+	return val;
+}
+int Add_2(int a, int b)
+{
+	printf("A = %d\n B = %d\n", a, b);
+	if (a == 0)
+	{
+		return b;
+	}
+	else
+	{	
+		return Add_2(a - 1, b + 1);
+	}
+}
+int Add_3(int a, int b)
+{
+	if (a == 0)
+	{
+		return b;
+	}
+	else if (b == 0)
+	{
+		return a;
+	}
+	else
+	{
+		printf("A = %d\n", a);
+		printf("B = %d\n", b);
+		return 1 + Add_3(a - 1, b);
+	}
+}
+void TestRec()
+{
+	int i = 0;
+	printf("5+6 = %d\n",Add_2(5,6));
 }
