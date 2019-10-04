@@ -265,12 +265,42 @@ int Mul(int a, int b)
 		return -Mul(a, -b);
 	}
 }
+int Divid(int a, int b)
+{
+	printf("A= %i B = %i\n", a, b);
+	if(a == 0)
+	{
+		return 0;
+	}
+	if (a<b)
+	{
+		return 0;
+	}
+	if (b < 0)
+	{
+		return -Divid(a, -b);
+	}
+	else if (b>0)
+	{
+		return 1 + Divid(a - b, b);
+	}
+	else if (a < 0)
+	{
+		return -Divid(-a, b);
+	}
+}
+int Modulo(int a, int b)
+{
+	return a - Mul(b, Divid(a, b));
+}
 void TestRec()
 {
 	int i = 0;
 	printf("5+6 = %d\n",Add_2(5,6));
-	int a = -4;
-	int b = -6;
+	int a = 12;
+	int b = 5;
 	printf("(%i) - (%i) = %d\n",a,b,Sub(a,b));
 	printf("(%i) x (%i) = %d\n",a,b,Mul(a,b));
+	printf("(%i) / (%i) = %d\n",a,b,Divid(a,b));
+	printf("(%i) / (%i) = %d.%d\n",a,b,Divid(a,b),Modulo(a,b));
 }
