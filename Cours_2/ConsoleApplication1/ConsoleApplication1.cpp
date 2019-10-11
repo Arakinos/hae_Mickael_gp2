@@ -5,20 +5,35 @@
 #include <iostream>
 #include "IntArray.hpp"
 
+void assert(bool boubou)
+{
+	if (!boubou)
+	{
+		throw new std::string("nope");
+	}
+}
 int main()
 {
 	auto NameTab0 = "Tab0";
 	auto NameTab1 = "Tab1";
-
-
 	{
-		IntArray Tab0 = IntArray(16,NameTab0);
-		
+		IntArray Tab0 = IntArray(16,NameTab0);		
 	}
 	{
 		IntArray * Tab1 = new IntArray(16,NameTab1);
+
+		int i = 0;
 	}
-	printf("%i\n", IntArray::TEST);
+	{
+		IntArray t(16);
+		for (int i = 0; i < 16; i++)
+		{
+			t.SetSafe(i,i);
+		}
+		t.Push_Back(5);
+		t.Push_Front(2);
+		t.insert(5,9);
+	}
 }
 
 
