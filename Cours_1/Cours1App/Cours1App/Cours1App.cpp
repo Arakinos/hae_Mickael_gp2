@@ -361,14 +361,6 @@ int StrCmpRec(char * meule, char * Aiguille)
 	{
 		return 0;
 	}
-	if (*meule == 0)
-	{
-		return 1;
-	}
-	if (*Aiguille == 0)
-	{
-		return -1;
-	}
 	if (*meule < *Aiguille)
 	{
 		return 1;
@@ -379,15 +371,93 @@ int StrCmpRec(char * meule, char * Aiguille)
 	}
 	return StrCmpRec(meule + 1, Aiguille + 1);
 }
-void StrCatRec(char * str0, char * str1)
+void StrCatRec(char * dest, char * src)
 {
-	if (*str1 != 0)
+	if (*dest == 0) // [J]e suis un texte[0] // Alpha0 
 	{
-		*str0 = *str1;
+		if (*src != 0)
+		{
+			*dest = *src;  // dest[16] = src[0] // dest[17] = src[1]
+			*(dest + 1) = 0;
+			StrCatRec(dest + 1, src + 1);
+		}
 	}
-	return StrCatRec(str0 + StrlenRec(str0) + 1, str1 -1);
-
+	else return StrCatRec(dest + 1, src);
 }
+bool StrCmpStr(const char* base, const char* found)
+{
+	if (*found == 0)
+	{
+		return true;
+	}
+	if (*base == *found)
+	{
+		return StrCmpStr(base + 1, found + 1);
+	}
+	return false;
+}
+const char * StrStrRec(const char* src, const char* Obj) {
+	if (*src == *Obj)
+	{
+		bool Alpha = StrCmpStr(src, Obj);
+		if (StrCmpStr(src, Obj))
+		{
+			return src;
+		}
+	}
+	if (*src == 0)
+	{
+		return nullptr;
+	}
+	if (*Obj == 0)
+	{
+		return nullptr;
+	}
+	return StrStrRec(src + 1, Obj);
+}
+char* StrChrRec(char*str, char tok)
+{
+	if (tok == 0 || *str == 0)
+	{
+		return nullptr;
+	}
+	else if (*str == tok)
+	{
+		return str;
+	}
+	else return StrChrRec(str + 1, tok);
+}
+bool startswith(const char * str0, const char * str1)
+{
+	if (*str0 == 0 && *str1 != 0)
+	{
+		return false;
+	}
+	if (*str1 == 0)
+	{
+		return true;
+	}
+	if (*str0 != *str1)
+	{
+		return false;
+	}
+	else
+	{
+		return startswith(str0 + 1, str1 + 1);
+	}
+}
+const char * strstr2(const char * str0, const char* str1)
+{
+	if (startswith(str0, str1))
+	{
+		return str0;
+	}
+	else
+	{
+		return strstr2(str0 + 1, str1 + 1);
+	}
+}
+
 void TestRec()
 {
 	int i = 0;
@@ -413,6 +483,10 @@ void TestRec()
 	char Texte[32] = "Je suis un texte";
 	char mot[32] = "texte";
 	printf("%i\n",StrCmpRec(Texte,mot));
-	StrCatRec(Buffer, mot);
-	//printf("%s\n",StrCatRec(Buffer,mot));
+	StrCatRec(Texte, mot);
+	printf("%s\n", Texte);
+	char tok = 't';
+
+	const char Omega[256] = "Ma E Vie Est Longu Est Longue";
+	printf("%s\n", StrStrRec(Omega, "Est"));
 }
