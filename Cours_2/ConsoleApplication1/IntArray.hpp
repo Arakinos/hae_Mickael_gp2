@@ -78,29 +78,62 @@ public:
 		Data[0] = Elem;
 		curSize++;
 	}
-	void insert(int Pos, int Elem)
+	void insert(int Pos, int Elem);
+	int getLenght()
 	{
-		if (Pos >= curSize)
+		return curSize;
+	}
+	int SearchPosition(int Element)
+	{
+		int Alpha = 0;
+		for (int i = 0; i <getLenght(); i++)
 		{
-			Ensure(Pos + 1);
+			if (Element <= Data[i])
+			{
+				return i;
+			}
 		}
-		else
+		return getLenght();
+	}
+	void removeTrier(int valeur)
+	{
+		if (Data[SearchPosition(valeur)] == valeur)
 		{
-			Ensure(curSize + 1);
+			int i = SearchPosition(valeur);
+			for (i; i <= getLenght(); i++)
+			{
+				Data[i] = Data[i + 1];
+			}
+			curSize--;
 		}
-		//ensure((pos>=curSize)?(pos+1):(curSize+1));
-		for (int i = curSize; i != Pos; i--)
+	}
+	void RemoveAll()
+	{
+		for (int i = 0; i < maxSize; i++)
 		{
-			Data[i] = Data[i - 1];
+			Data[i] = 0;
 		}
-		Data[Pos] = Elem;
-		if (Pos >= curSize)
+		curSize = 0;
+	}
+	void RemoveNonTrier(int valeur)
+	{
+		if (valeur < 0) return;
+		int pos = -1;
+		for (int i = 0; i < getLenght(); i++)
 		{
-			curSize = Pos + 1;
+			if (this->Data[i] == valeur)
+			{
+				pos = i;
+				break;
+			}
 		}
-		else
+		if (pos == -1)
 		{
-			curSize++;
+			return;
+		}
+		for (int i = pos; i < getLenght(); i++)
+		{
+			this->Data[i] = this->Data[i + 1];
 		}
 	}
 };

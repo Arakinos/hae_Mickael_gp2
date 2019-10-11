@@ -28,11 +28,11 @@ int main()
 		IntArray t(16);
 		for (int i = 0; i < 16; i++)
 		{
-			t.SetSafe(i,i);
+			t.SetSafe(i,i*2);
 		}
-		t.Push_Back(5);
-		t.Push_Front(2);
-		t.insert(5,9);
+		int PosVoulue = t.SearchPosition(6);
+		t.RemoveNonTrier(6);
+		int brez = 0;
 	}
 }
 
