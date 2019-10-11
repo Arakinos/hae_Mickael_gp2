@@ -28,11 +28,9 @@ int main()
 		IntArray t(16);
 		for (int i = 0; i < 16; i++)
 		{
-			t.SetSafe(i,i*2);
+			t.fillWithRandom(t.maxSize);
 		}
-		int PosVoulue = t.SearchPosition(6);
-		t.RemoveNonTrier(6);
-		int brez = 0;
+		t.trier();
 	}
 }
 
