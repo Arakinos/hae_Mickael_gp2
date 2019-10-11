@@ -80,12 +80,27 @@ public:
 	}
 	void insert(int Pos, int Elem)
 	{
-		Ensure(curSize + 1);
+		if (Pos >= curSize)
+		{
+			Ensure(Pos + 1);
+		}
+		else
+		{
+			Ensure(curSize + 1);
+		}
+		//ensure((pos>=curSize)?(pos+1):(curSize+1));
 		for (int i = curSize; i != Pos; i--)
 		{
 			Data[i] = Data[i - 1];
 		}
 		Data[Pos] = Elem;
-		curSize++;
+		if (Pos >= curSize)
+		{
+			curSize = Pos + 1;
+		}
+		else
+		{
+			curSize++;
+		}
 	}
 };
