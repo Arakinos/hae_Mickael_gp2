@@ -118,7 +118,7 @@ void IntArray::RemoveNonTrier(int valeur)
 void IntArray::fillWithRandom(int nbElem) {
 	Ensure(nbElem);
 	for (int i = 0; i < nbElem; ++i) {
-		int val = std::rand();
+		int val = std::rand()%100;
 		SetSafe(i, val);
 	}
 }
@@ -142,7 +142,7 @@ void IntArray::trier()
 		}
 		printf("]\n");
 	}
-	for (int i = 0; i <= curSize; i++)
+	/*for (int i = 0; i <= curSize; i++)
 	{
 		if (i == 0)
 		{
@@ -152,5 +152,9 @@ void IntArray::trier()
 		{
 			SetSafe(SearchPosition(Data2[i]), Data2[i]);
 		}
+	}*/
+	for (int i = 0; i < getLenght(); i++) 
+	{
+		SetSafe(i, Data2.get(i));
 	}
 }
