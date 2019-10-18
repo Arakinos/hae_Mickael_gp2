@@ -5,6 +5,8 @@
 #include <iostream>
 #include "IntArray.hpp"
 #include "Util.hpp"
+#include "List.hpp"
+#include "Tree.hpp"
 
 void assert(bool boubou)
 {
@@ -13,9 +15,60 @@ void assert(bool boubou)
 		throw std::exception();
 	}
 }
+
+void TestIntTree() {
+	IntTree * tree = new IntTree();
+	Node<int> * leaf = new IntNode(8);
+	leaf->insert(4);
+	//assert(leaf->left->elem == 4);
+
+	leaf->insert(9);
+	//assert(leaf->right->elem == 9);
+
+	leaf->insert(16);
+	leaf->insert(3);
+	leaf->insert(5);
+	assert(leaf->getLength() == 6);
+
+
+	assert(leaf->Contains(16) == true);
+	leaf->remove(16);
+	assert(leaf->Contains(16) == false);
+	assert(leaf->Contains(4) == true);
+	leaf->remove(4);
+	assert(leaf->Contains(4) == false);
+	leaf->insert(0);
+	assert(leaf->Contains(0) == true);
+	leaf->remove(0);
+	assert(leaf->Contains(0) == false);
+	leaf->dfsPrint();
+	printf("\n");
+	leaf->dfsPrintInverse();
+	int k = 0;
+}
+
+
+void TestList2()
+{
+	IntList* MONNOM = new IntList(8);
+	int toto = 8;
+	MONNOM->Append(6);
+	printf("Taile = %i \n", MONNOM->Length());
+	MONNOM =MONNOM->ConCat(12);
+	printf("Taile = %i \n", MONNOM->Length());
+	printf("Elem = %i \n", MONNOM->elem);
+	bool Alpha = MONNOM->Contains(60);
+	assert(Alpha == false);
+	bool Beta = MONNOM->Contains(12);
+	assert(Beta == true);
+	int  i = 0;
+}
 int main()
 {
-	double Alpha;
+	TestList2();
+	TestIntTree();
+
+	/*double Alpha;
 	double Omega;
 	auto NameTab0 = "Tab0";
 	auto NameTab1 = "Tab1";
@@ -45,7 +98,7 @@ int main()
 		double t3 = Util::GetTimeStamp();
 		printf("Temps de calcul du premier tableau : %llf for Normal \n", (t3 - t2));
 		int i = 0;
-	}
+	}*/
 	/*{
 		double t0 = Util::GetTimeStamp();
 		IntArray t(128);
@@ -75,6 +128,7 @@ int main()
 	}*/
 	int i = 0;
 }
+
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
 // Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
