@@ -76,6 +76,6 @@ public:
 		curSize = 0;
 	}
 	void RemoveNonTrier(int valeur);
-	void fillWithRandom(int nbElem);
+	void fillWithRandom(int nbElem); // Test PushGit
 	void trier();
 };
