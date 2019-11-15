@@ -1,0 +1,91 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Cours5.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
+  Cours5.cpp
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(42): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(43): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(44): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(45): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(46): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(76): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(85): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(86): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(87): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(88): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(89): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(90): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(91): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(92): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(109): warning C4305: 'argument' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(109): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(111): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(115): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(125): warning C4305: '+=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(281): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(288): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(295): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\cours5\cours5.cpp(302): warning C4551: liste d'arguments manquante dans l'appel de fonction
+  Cours5.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\Cours5\Debug\Cours_5.exe
