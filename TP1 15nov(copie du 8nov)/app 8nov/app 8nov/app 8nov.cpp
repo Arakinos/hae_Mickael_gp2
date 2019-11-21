@@ -3,7 +3,6 @@
 
 // app 8nov.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
-
 #include "pch.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -11,9 +10,11 @@
 
 #include "Lib.h"
 #include <direct.h>
-#include <SFML/Graphics.hpp>
 #include "Entity.h"
 #include "Bullet.h"
+#include"Box2D/Box2D.h"
+
+
 
 using namespace sf;
 static std::vector<Entity> CharList;
@@ -59,6 +60,7 @@ bool collisionL = false;
 bool collisionU = false;
 bool collisionD = false;
 Vector2f Beta;
+//b2Vec2 gravity(0.0f, -10.0f);
 void world(sf::RenderWindow &win)
 {
 	if (CharList[0].tank.getGlobalBounds().intersects(CharList[1].tank.getGlobalBounds()))
@@ -136,14 +138,24 @@ int main()
 	CharList.push_back(Player);
 	CharList.push_back(Ennemy);
 	BulletList.push_back(PongBall);
-	
 
+#pragma region Box2D
+
+	/*b2World world2(gravity);
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0.0f, -10.0f);
+	b2Body* groundBody = world2.CreateBody(&groundBodyDef);
+	b2PolygonShape groundBox;
+	groundBox.SetAsBox(50.0f, 10.0f);
+	groundBody->CreateFixture(&groundBox, 0.0f);*/
+
+#pragma endregion
 
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
 	static RectangleShape sh;
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!", sf::Style::Default, settings);
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Box2D works!", sf::Style::Default, settings);
 	window.setVerticalSyncEnabled(true);
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
@@ -223,16 +235,12 @@ int main()
 			}
 
 		}
-	
-		
-		
+
 		/*if (collision)
 		{
 			printf("Blocked");
 			CharList[0].position = Alpha;
 		}*/
-
-
 
 		window.clear();//nettoie la frame
 		drawTank(window);
@@ -241,7 +249,5 @@ int main()
 
 		window.display();//ca dessine et ca attend la vsync
 	}
-
 	return 0;
 }
-
