@@ -8,11 +8,12 @@ public:
 	sf::Vector2f position;
 	sf::CircleShape ball;
 	sf::CircleShape BallCollider;
+	int BallLife;
+	int numero;
 	float u, r;
 	Ball(sf::Vector2f pos, float size)
 	{
 		
-		//ball.setOrigin(ball.get)
 		ball.setRadius(size);
 		position = pos;
 		ball.setFillColor(sf::Color::Red);

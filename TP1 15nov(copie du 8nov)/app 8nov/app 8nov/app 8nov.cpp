@@ -92,22 +92,54 @@ void world(sf::RenderWindow &win)
 		if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 		{
 			BallList[i].r = -BallList[i].r;
-			int A = 0;
+			if (BallList[i].BallLife == 1)
+			{
+				BallList.erase(BallList.begin() + i);
+				break;
+			}
+			if (BallList[i].BallLife == 0)
+			{
+				BallList[i].BallLife += 1;
+			}
 		}
 		if (WallList[1].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 		{
 			BallList[i].r = -BallList[i].r;
-			int A = 0;
+			if (BallList[i].BallLife == 1)
+			{
+				BallList.erase(BallList.begin() + i);
+				break;
+			}
+			if (BallList[i].BallLife == 0)
+			{
+				BallList[i].BallLife += 1;
+			}
 		}
 		if (WallList[2].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 		{
 			BallList[i].u = -BallList[i].u;
-			int A = 0;
+			if (BallList[i].BallLife == 1)
+			{
+				BallList.erase(BallList.begin() + i);
+				break;
+			}
+			if (BallList[i].BallLife == 0)
+			{
+				BallList[i].BallLife += 1;
+			}
 		}
 		if (WallList[3].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 		{
 			BallList[i].u = -BallList[i].u;
-			int A = 0;
+			if (BallList[i].BallLife == 1)
+			{
+				BallList.erase(BallList.begin() + i);
+				break;
+			}
+			if (BallList[i].BallLife == 0)
+			{
+				BallList[i].BallLife += 1;
+			}
 		}
 	}
 
@@ -126,17 +158,11 @@ void drawTank(sf::RenderWindow &win)
 	for (Entity &Elem : CharList)
 	{
 		win.draw(Elem.tank);
-		Elem.SetPosition();
-	}
-}
-void drawViseur(sf::RenderWindow &win)
-{
-	for (Entity &Elem : CharList)
-	{
 		win.draw(Elem.Viseur);
 		Elem.SetPosition();
 	}
 }
+
 void drawBall(sf::RenderWindow &win)
 {
 	for (Ball &Elem : BallList)
@@ -255,9 +281,10 @@ int main()
 
 				if (!Shoot && sf::Joystick::isButtonPressed(0, 5))
 				{
-					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 5);
+					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 15);
 					Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
 					Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+					Balle.BallLife = 0;
 					BallList.push_back(Balle);
 				}
 				if (sf::Joystick::isButtonPressed(0, 5))
@@ -276,7 +303,6 @@ int main()
 		window.clear();
 		drawWallet(window);
 		drawTank(window);
-		drawViseur(window);
 		drawBall(window);
 		window.display();//ca dessine et ca attend la vsync
 
