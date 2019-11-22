@@ -1,0 +1,17 @@
+﻿  pch.cpp
+  app 8nov.cpp
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(46): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(48): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(49): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(50): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(51): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(359): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(375): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(392): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(409): warning C4551: liste d'arguments manquante dans l'appel de fonction
+  Ball.cpp
+  Entity.cpp
+  Lib.cpp
+  Génération de code en cours...
+sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'
