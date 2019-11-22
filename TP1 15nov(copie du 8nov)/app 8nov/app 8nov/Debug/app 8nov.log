@@ -5,10 +5,10 @@ c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov
 c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(50): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
 c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(51): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
 c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(52): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(211): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(220): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(230): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(240): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(250): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(256): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(187): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(196): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(206): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(216): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(226): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(233): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
   app 8nov.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\TP1 15nov(copie du 8nov)\app 8nov\Debug\app 8nov.exe
