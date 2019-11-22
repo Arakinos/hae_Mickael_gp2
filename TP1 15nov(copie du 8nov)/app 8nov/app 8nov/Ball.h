@@ -11,6 +11,7 @@ public:
 	float u, r;
 	Ball(sf::Vector2f pos, float size)
 	{
+		
 		//ball.setOrigin(ball.get)
 		ball.setRadius(size);
 		position = pos;

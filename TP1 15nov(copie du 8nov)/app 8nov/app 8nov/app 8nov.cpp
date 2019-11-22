@@ -48,6 +48,8 @@ sf::Color hsv(int hue, float sat, float val)
 	}
 }
 static Vector2f shPos(0, 0);
+static int height;
+static int width;
 //static Vector2f ballpos(shPos);
 
 int squareSpeed = 3;
@@ -59,15 +61,11 @@ sf::FloatRect boundingBox;
 Vector2f Alpha;
 sf::FloatRect otherBox;
 
-bool collision = false;
-bool collisionR = false;
-bool collisionL = false;
-bool collisionU = false;
-bool collisionD = false;
 Vector2f Beta;
 
 void world(sf::RenderWindow &win)
 {
+	
 	for (int i = 0; i < WallList.size(); i++)
 	{
 		if (CharList[0].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
@@ -89,8 +87,29 @@ void world(sf::RenderWindow &win)
 		Beta.y = CharList[0].position.y;
 		squareSpeed = 3;
 	}
-	
-
+	for (int i = 0; i < BallList.size(); i++)
+	{
+		if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+		{
+			BallList[i].r = -BallList[i].r;
+			int A = 0;
+		}
+		if (WallList[1].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+		{
+			BallList[i].r = -BallList[i].r;
+			int A = 0;
+		}
+		if (WallList[2].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+		{
+			BallList[i].u = -BallList[i].u;
+			int A = 0;
+		}
+		if (WallList[3].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+		{
+			BallList[i].u = -BallList[i].u;
+			int A = 0;
+		}
+	}
 
 
 }
@@ -144,7 +163,8 @@ int main()
 	static RectangleShape sh;
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
-	int height = window.getSize().y;
+	height = window.getSize().y;
+	width = window.getSize().x;
 	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 3));
 	Wall Down = Wall(Vector2f(0, (window.getSize().y)-3), Vector2f(window.getSize().x, 3));
 	Wall Left = Wall(Vector2f(0, 0), Vector2f(3, height));
@@ -232,6 +252,7 @@ int main()
 				float angle = (atan2(u, r) * 180) / 3.141592654;
 				CharList[0].Viseur.setRotation(-angle);
 
+
 				if (!Shoot && sf::Joystick::isButtonPressed(0, 5))
 				{
 					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 5);
@@ -248,6 +269,7 @@ int main()
 					Shoot = false;
 				}
 			}
+			
 		}
 
 
