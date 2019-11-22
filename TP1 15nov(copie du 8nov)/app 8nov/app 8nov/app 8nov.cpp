@@ -11,18 +11,13 @@
 #include <SFML/Graphics.hpp>
 #include "Entity.h"
 #include "Ball.h"
+#include "Wall.h"
 #include <Box2D/Box2D.h>
 
 using namespace sf;
-/*Vector2i Point1(100, 100);
-Vector2i Point2(200, 200);
-Vector2i Point3(300, 300);
-Vector2i Point4(400, 400);
-Vector2i Point5(500, 500);
-Vector2i Point6(600, 600);
-Vector2i Point7(700, 700);*/
 static std::vector<Entity> CharList;
 static std::vector<Ball> BallList;
+static std::vector<Wall> WallList;
 sf::Color hsv(int hue, float sat, float val)
 {
 	hue %= 360;
@@ -78,31 +73,9 @@ void world(sf::RenderWindow &win)
 		CharList[0].position.x = Beta.x;
 		CharList[0].position.y = Beta.y;
 		squareSpeed = 0;
-		/*if (collision==false)
-		{
-			Alpha = CharList[0].position;
-			printf("collision",collision);
-			collision = true;
-		}
-		if (collision == true)
-		{
-			CharList[0].position = Alpha;
-		}
-
-		boundingBox = CharList[0].tank.getGlobalBounds();
-		//boundingBox.left
-		squareSpeed = 3;*/
 	}
 	else
 	{
-		/*if (collision == true)
-		{
-			collisionD = false;
-			collisionR= false;
-			collisionL= false;
-			collisionU = false;
-			collision = false;
-		}*/
 		Beta.x = CharList[0].position.x;
 		Beta.y = CharList[0].position.y;
 		squareSpeed = 3;
@@ -111,6 +84,14 @@ void world(sf::RenderWindow &win)
 
 
 
+}
+void drawWallet(sf::RenderWindow &win)
+{
+	for (Wall &Elem : WallList)
+	{
+		win.draw(Elem.wallet);
+		Elem.SetPosition();
+	}
 }
 void drawTank(sf::RenderWindow &win)
 {
@@ -135,7 +116,7 @@ void drawBall(sf::RenderWindow &win)
 
 		win.draw(Elem.ball);
 		Elem.ball.move(Elem.u/8, Elem.r/8);
-		//Elem.SetPosition();
+		
 	}
 }
 
@@ -153,7 +134,16 @@ int main()
 	settings.antialiasingLevel = 2;
 	static RectangleShape sh;
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!", sf::Style::Default, settings);
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
+	int height = window.getSize().y;
+	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 3));
+	Wall Down = Wall(Vector2f(0, (window.getSize().y)-3), Vector2f(window.getSize().x, 3));
+	Wall Left = Wall(Vector2f(0, 0), Vector2f(3, height));
+	Wall Right = Wall(Vector2f(window.getSize().x-3, 0), Vector2f(3, height));
+	WallList.push_back(Up);
+	WallList.push_back(Down);
+	WallList.push_back(Left);
+	WallList.push_back(Right);
 #pragma region MyRegion
 
 
@@ -253,7 +243,7 @@ int main()
 
 
 		window.clear();
-		
+		drawWallet(window);
 		drawTank(window);
 		drawViseur(window);
 		drawBall(window);

@@ -171,6 +171,9 @@
     <ClInclude Include="..\..\..\Box2D\Box2D\Rope\b2Rope.h">
       <Filter>Fichiers sources\Box2D</Filter>
     </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -325,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Box2D\Box2D\Rope\b2Rope.cpp">
       <Filter>Fichiers sources\Box2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
