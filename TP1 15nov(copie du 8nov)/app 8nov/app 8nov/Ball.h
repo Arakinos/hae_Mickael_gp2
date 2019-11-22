@@ -9,7 +9,6 @@ public:
 	sf::CircleShape ball;
 	sf::CircleShape BallCollider;
 	int BallLife;
-	int numero;
 	float u, r;
 	Ball(sf::Vector2f pos, float size)
 	{
@@ -18,8 +17,6 @@ public:
 		position = pos;
 		ball.setFillColor(sf::Color::Red);
 		ball.setPosition(pos);
-
-
 	}
 	void SetPosition()
 	{

@@ -62,6 +62,7 @@ Vector2f Alpha;
 sf::FloatRect otherBox;
 
 Vector2f Beta;
+Vector2f Beta2;
 
 void world(sf::RenderWindow &win)
 {
@@ -72,6 +73,8 @@ void world(sf::RenderWindow &win)
 		{
 			CharList[0].position.x = Beta.x;
 			CharList[0].position.y = Beta.y;
+			CharList[1].position.x = Beta2.x;
+			CharList[1].position.y = Beta2.y;
 			squareSpeed = 0;
 		}
 	}
@@ -79,12 +82,16 @@ void world(sf::RenderWindow &win)
 	{
 		CharList[0].position.x = Beta.x;
 		CharList[0].position.y = Beta.y;
+		CharList[1].position.x = Beta2.x;
+		CharList[1].position.y = Beta2.y;
 		squareSpeed = 0;
 	}
 	else
 	{
 		Beta.x = CharList[0].position.x;
 		Beta.y = CharList[0].position.y;
+		Beta2.x = CharList[1].position.x;
+		Beta2.y = CharList[1].position.y;
 		squareSpeed = 3;
 	}
 	for (int i = 0; i < BallList.size(); i++)
@@ -177,6 +184,7 @@ void drawBall(sf::RenderWindow &win)
 int main()
 {
 	bool Shoot = false;
+	bool Shoot2 = false;
 	Entity Player = Entity(Vector2f(500, 500), Vector2f(80, 80));
 	Entity Ennemy = Entity(Vector2f(80, 80), Vector2f(30, 30));
 
@@ -229,7 +237,7 @@ int main()
 		sf::Vector2i globalPosition = sf::Mouse::getPosition();
 		
 
-		if (sf::Joystick::isConnected)
+		if (sf::Joystick::isConnected(0))
 		{
 			float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
 			if (x > 25)
@@ -238,17 +246,36 @@ int main()
 			}
 
 		}
-		if (sf::Joystick::isConnected)
+		if (sf::Joystick::isConnected(1))
+		{
+			float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+			if (x > 25)
+			{
+				CharList[1].position.x += squareSpeed;
+			}
+
+		}
+		if (sf::Joystick::isConnected(0))
 		{
 			float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-			if (x < -2)
+			if (x < -25)
 			{
 				CharList[0].position.x -= squareSpeed;
 
 			}
 
 		}
-		if (sf::Joystick::isConnected)
+		if (sf::Joystick::isConnected(1))
+		{
+			float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+			if (x < -25)
+			{
+				CharList[1].position.x -= squareSpeed;
+
+			}
+
+		}
+		if (sf::Joystick::isConnected(0))
 		{
 			float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
 			if (y > 25)
@@ -258,13 +285,32 @@ int main()
 			}
 
 		}
-		if (sf::Joystick::isConnected)
+		if (sf::Joystick::isConnected(1))
+		{
+			float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+			if (y > 25)
+			{
+				CharList[1].position.y += squareSpeed;
+
+			}
+
+		}
+		if (sf::Joystick::isConnected(0))
 		{
 			float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
 			if (y < -25)
 			{
 				Alpha = CharList[0].position;
 				CharList[0].position.y -= squareSpeed;
+			}
+
+		}
+		if (sf::Joystick::isConnected(1))
+		{
+			float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+			if (y < -25)
+			{
+				CharList[1].position.y -= squareSpeed;
 			}
 
 		}
@@ -279,7 +325,7 @@ int main()
 				CharList[0].Viseur.setRotation(-angle);
 
 
-				if (!Shoot && sf::Joystick::isButtonPressed(0, 5))
+				if (!Shoot && sf::Joystick::getAxisPosition(0,Joystick::Z)<-50)
 				{
 					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 15);
 					Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
@@ -287,7 +333,7 @@ int main()
 					Balle.BallLife = 0;
 					BallList.push_back(Balle);
 				}
-				if (sf::Joystick::isButtonPressed(0, 5))
+				if (sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
 				{
 					Shoot = true;
 				}
@@ -297,6 +343,34 @@ int main()
 				}
 			}
 			
+		}
+		if (sf::Joystick::isConnected)
+		{
+			float u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
+			float r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
+			if (u > 25 || u < -25 || r>25 || r < -25)
+			{
+				float angle = (atan2(u, r) * 180) / 3.141592654;
+				CharList[1].Viseur.setRotation(-angle);
+
+				if (!Shoot2 && sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
+				{
+					Ball Balle = Ball(CharList[1].Viseur.getPosition(), 15);
+					Balle.u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
+					Balle.r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
+					Balle.BallLife = 0;
+					BallList.push_back(Balle);
+				}
+				if (sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
+				{
+					Shoot2 = true;
+				}
+				else
+				{
+					Shoot2 = false;
+				}
+			}
+
 		}
 
 
