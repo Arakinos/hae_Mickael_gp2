@@ -68,6 +68,15 @@ Vector2f Beta;
 
 void world(sf::RenderWindow &win)
 {
+	for (int i = 0; i < WallList.size(); i++)
+	{
+		if (CharList[0].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
+		{
+			CharList[0].position.x = Beta.x;
+			CharList[0].position.y = Beta.y;
+			squareSpeed = 0;
+		}
+	}
 	if (CharList[0].tank.getGlobalBounds().intersects(CharList[1].tank.getGlobalBounds()))
 	{
 		CharList[0].position.x = Beta.x;
@@ -80,7 +89,7 @@ void world(sf::RenderWindow &win)
 		Beta.y = CharList[0].position.y;
 		squareSpeed = 3;
 	}
-
+	
 
 
 
@@ -123,7 +132,7 @@ void drawBall(sf::RenderWindow &win)
 int main()
 {
 	bool Shoot = false;
-	Entity Player = Entity(Vector2f(30, 30), Vector2f(80, 80));
+	Entity Player = Entity(Vector2f(500, 500), Vector2f(80, 80));
 	Entity Ennemy = Entity(Vector2f(80, 80), Vector2f(30, 30));
 
 
