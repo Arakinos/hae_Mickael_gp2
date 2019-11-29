@@ -1,9 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Cours4.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
   Cours_7_Shader.cpp
-c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(135): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(141): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(181): warning C4474: 'printf' : trop d'arguments passés pour la chaîne de format
-  c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(181): note: les espaces réservés et leurs paramètres attendent des arguments 0 variadiques, mais des arguments 1 ont été fournis
-c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(324): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(325): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(139): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(145): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(185): warning C4474: 'printf' : trop d'arguments passés pour la chaîne de format
+  c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(185): note: les espaces réservés et leurs paramètres attendent des arguments 0 variadiques, mais des arguments 1 ont été fournis
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(370): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(371): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   Cours4.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\Cours_7_Shader\Cours_7_Shader\Debug\Cours_7_Shader.exe

@@ -6,8 +6,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Lib.h"
-
+#include <sys/stat.h>
+#include <functional>
 using namespace sf;
+static struct stat sb;
+static struct stat sb2;
+int i = 0;
 class Turtle : public sf::ConvexShape {
 public:
 	sf::Transform m_Trs;
@@ -223,6 +227,46 @@ static void ReadScript()
 	}
 	ExecuteOrder();
 }
+static void CheckDate()
+{ 
+	stat("res/ScriptTortue.txt", &sb2);
+	if (sb2.st_mtime != sb.st_mtime && i == 1)
+	{
+		ReadScript();
+		sb = sb2;
+	}
+	else
+	{
+		i = 1;
+		sb = sb2;
+	}
+}
+
+class Repeater
+{
+public:
+	float duration;
+	float current;
+	std::function<void(void)> cbk;
+
+	Repeater(float duration, std::function<void(void)> action)
+	{
+		cbk = action;
+		this->duration = duration;
+		current = duration;
+	}
+
+	void update(float dt)
+	{
+		current -= dt;
+		if (current <= 0)
+		{
+			if (cbk)cbk();
+			current = duration;
+		}
+	}
+};
+
 
 int main() {
 	sf::ContextSettings settings;
@@ -241,7 +285,8 @@ int main() {
 	sf::Time appStart = clock.getElapsedTime();
 	sf::Time frameStart = clock.getElapsedTime();
 	sf::Time prevFrameStart = clock.getElapsedTime();
-
+	Repeater Boucle(100.0f,CheckDate);
+	
 	float fps[4] = { 0.f,0.f,0.f,0.f };
 	int step = 0;
 	sf::Font * font = new sf::Font();
@@ -287,6 +332,7 @@ int main() {
 		window.setView(initialView);
 
 		window.clear();
+		CheckDate();
 		while (window.pollEvent(event)) {
 
 		//	ImGui::SFML::ProcessEvent(event);
