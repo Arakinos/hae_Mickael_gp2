@@ -8,7 +8,6 @@
 #include "Lib.h"
 
 using namespace sf;
-
 class Turtle : public sf::ConvexShape {
 public:
 	sf::Transform m_Trs;
@@ -38,55 +37,59 @@ static sf::Transform				s_Initial;
 static std::vector<sf::Transform>	s_Trs;
 static std::vector<Turtle*>			s_Turtles;
 
+bool startsWith(const char * s0, const char * s1) {
+	if (*s0 == 0 && *s1 != 0)
+		return false;
+	if (*s1 == 0)
+		return true;
+	if (*s0 != *s1)
+		return false;
+	else
+		return startsWith(s0 + 1, s1 + 1);
+}
+#pragma region Turtle
+
+
 
 static void startTransforms() {
 	s_Initial = Transform::Identity;
 	s_Initial.translate(500, 500);
 }
-
 static void translateX(float dx) {
 	sf::Transform res;
 	res.translate(dx, 0);
 	s_Trs.push_back(res);
 }
-
 static void translateY(float dy) {
 	sf::Transform res;
 	res.translate(0, dy);
 	s_Trs.push_back(res);
 }
-
 static void rotate(float degrees) {
 	sf::Transform res;
 	res.rotate(degrees);
 	s_Trs.push_back(res);
 }
-
 static void scaleXY(float dx, float dy) {
 	sf::Transform res;
 	res.scale(dx, dy);
 	s_Trs.push_back(res);
 }
-
 static void scaleXY(float dxy) {
 	sf::Transform res;
 	res.scale(dxy, dxy);
 	s_Trs.push_back(res);
 }
-
 static void scaleX(float dx) {
 	sf::Transform res;
 	res.scale(dx, 0);
 	s_Trs.push_back(res);
 }
-
 static void scaleY(float dy) {
 	sf::Transform res;
 	res.scale(0, dy);
 	s_Trs.push_back(res);
 }
-
-
 static void computeTransform(sf::Transform & result, int step = -1) {
 	sf::Transform inter;
 
@@ -106,8 +109,6 @@ static void computeTransform(sf::Transform & result, int step = -1) {
 	}
 	result = inter;
 }
-
-
 static void plotTurtle() {
 	sf::Transform cur;
 	computeTransform(cur, s_Trs.size());
@@ -115,9 +116,55 @@ static void plotTurtle() {
 	t->setTransform(cur);
 	s_Turtles.push_back(t);
 }
-
-
+#pragma endregion
+enum TurtleCommand
+{
+	AV,REC,GROSSI,L45,R45,
+};
+static std::vector<TurtleCommand> cmd;
 static char Data[1024];
+void ExecuteOrder()
+{
+	auto delta = 32;
+	for (TurtleCommand tc : cmd)
+	{
+		switch (tc)
+		{
+		case AV:
+		{
+			translateY(-delta);
+			plotTurtle();
+			break;
+		}
+		case REC:
+		{
+			translateY(delta);
+			plotTurtle();
+			break;
+		}
+		case GROSSI:
+		{
+			scaleXY(2.0);
+			plotTurtle();
+			break;
+		}
+		case L45:
+		{
+			rotate(-45);
+			plotTurtle();
+			break;
+		}
+		case R45:
+		{
+			rotate(45);
+			plotTurtle();
+			break;
+		}
+		default:
+			break;
+		}
+	}
+}
 static void ReadScript()
 {
 	FILE * f;
@@ -133,9 +180,51 @@ static void ReadScript()
 	{
 		printf("Cannot read the file", "res/ScriptTortue.txt");
 	}
+
+	char * cur = Data;
+
+	bool doContinue = true;
+	while (doContinue)
+	{
+		if (*cur == 0 || cur == nullptr) break;
+		else
+		{
+			if (startsWith(cur, "AV"))
+			{
+				cmd.push_back(AV);
+			}
+			if (startsWith(cur, "REC"))
+			{
+				cmd.push_back(REC);
+			}
+			if (startsWith(cur, "GROSSI"))
+			{
+				cmd.push_back(GROSSI);
+			}
+			if (startsWith(cur, "L45"))
+			{
+				cmd.push_back(L45);
+			}
+			if (startsWith(cur, "R45"))
+			{
+				cmd.push_back(R45);
+			}
+			else
+			{
+				
+			}
+			cur = strstr(cur, " ");
+			if (!cur) break;
+			else
+			{
+				cur++;
+			}
+		}
+	}
+	ExecuteOrder();
 }
+
 int main() {
-	ReadScript();
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
 
@@ -190,7 +279,7 @@ int main() {
 
 	startTransforms();
 	plotTurtle();
-
+	ReadScript();
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
 		sf::Event event;//recup les evenement clavier/pad
