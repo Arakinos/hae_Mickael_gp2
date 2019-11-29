@@ -1,0 +1,121 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Cours4.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
+  Cours_7_Shader.cpp
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(19): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(32): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(59): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(60): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(61): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(62): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(63): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(64): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(81): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(91): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(92): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(93): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(94): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(95): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(96): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(97): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(98): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(99): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(100): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(101): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(110): warning C4305: 'argument' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(110): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(112): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(116): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(126): warning C4305: '+=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours_7_shader\cours_7_shader\cours_7_shader.cpp(194): warning C4551: liste d'arguments manquante dans l'appel de fonction
+  Cours4.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\Cours_7_Shader\Cours_7_Shader\Debug\Cours_7_Shader.exe
