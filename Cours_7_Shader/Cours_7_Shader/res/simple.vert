@@ -4,7 +4,7 @@ void main()
 {
     // transform the vertex position
     gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-	gl_Position.x += tan(0.5 + cos(time) * gl_Position.x);
+	gl_Position.x += tan(0.5 + cos(time) * gl_Position.x)*cos(tan(sin(time)));
 	gl_Position.y += tan(0.5 + sin(time) * gl_Position.y)*cos(tan(sin(time)));
 
 	
