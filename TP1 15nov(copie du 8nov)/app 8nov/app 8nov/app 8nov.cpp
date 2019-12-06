@@ -69,13 +69,19 @@ void world(sf::RenderWindow &win)
 	
 	for (int i = 0; i < WallList.size(); i++)
 	{
-		if (CharList[0].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
+		if (CharList.size() > 1)
 		{
-			CharList[0].position.x = Beta.x;
-			CharList[0].position.y = Beta.y;
-			CharList[1].position.x = Beta2.x;
-			CharList[1].position.y = Beta2.y;
-			squareSpeed = 0;
+			if (CharList[0].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
+			{
+				CharList[0].position.x = Beta.x;
+				CharList[0].position.y = Beta.y;
+				//squareSpeed = 0;
+			}
+			if (CharList[1].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
+			{
+				CharList[1].position.x = Beta2.x;
+				CharList[1].position.y = Beta2.y;
+			}
 		}
 	}
 	if (CharList.size() > 1)
@@ -88,7 +94,6 @@ void world(sf::RenderWindow &win)
 			CharList[1].position.y = Beta2.y;
 			squareSpeed = 0;
 		}
-
 		else
 		{
 			Beta.x = CharList[0].position.x;
@@ -97,11 +102,11 @@ void world(sf::RenderWindow &win)
 			Beta2.y = CharList[1].position.y;
 			squareSpeed = 3;
 		}
-
 		for (int i = 0; i < BallList.size(); i++)
 		{
 			if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 15));
 				BallList[i].r = -BallList[i].r;
 				if (BallList[i].BallLife == 1)
 				{
@@ -115,6 +120,7 @@ void world(sf::RenderWindow &win)
 			}
 			if (WallList[1].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y - 15));
 				BallList[i].r = -BallList[i].r;
 				if (BallList[i].BallLife == 1)
 				{
@@ -128,6 +134,7 @@ void world(sf::RenderWindow &win)
 			}
 			if (WallList[2].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x + 15, BallList[i].ball.getPosition().y));
 				BallList[i].u = -BallList[i].u;
 				if (BallList[i].BallLife == 1)
 				{
@@ -141,6 +148,7 @@ void world(sf::RenderWindow &win)
 			}
 			if (WallList[3].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x - 15, BallList[i].ball.getPosition().y));
 				BallList[i].u = -BallList[i].u;
 				if (BallList[i].BallLife == 1)
 				{
@@ -227,10 +235,10 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
 	height = window.getSize().y;
 	width = window.getSize().x;
-	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 3));
-	Wall Down = Wall(Vector2f(0, (window.getSize().y)-3), Vector2f(window.getSize().x, 3));
-	Wall Left = Wall(Vector2f(0, 0), Vector2f(3, height));
-	Wall Right = Wall(Vector2f(window.getSize().x-3, 0), Vector2f(3, height));
+	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 10));
+	Wall Down = Wall(Vector2f(0, (window.getSize().y)-3), Vector2f(window.getSize().x, 10));
+	Wall Left = Wall(Vector2f(0, 0), Vector2f(10, height));
+	Wall Right = Wall(Vector2f(window.getSize().x-3, 0), Vector2f(10, height));
 	WallList.push_back(Up);
 	WallList.push_back(Down);
 	WallList.push_back(Left);

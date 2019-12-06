@@ -6,6 +6,7 @@ class Ball
 
 public:
 	sf::Vector2f position;
+	sf::Vector2f Prepos;
 	sf::CircleShape ball;
 	sf::CircleShape BallCollider;
 	int BallLife;
