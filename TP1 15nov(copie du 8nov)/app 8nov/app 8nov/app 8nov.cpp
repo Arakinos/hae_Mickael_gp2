@@ -78,79 +78,108 @@ void world(sf::RenderWindow &win)
 			squareSpeed = 0;
 		}
 	}
-	if (CharList[0].tank.getGlobalBounds().intersects(CharList[1].tank.getGlobalBounds()))
+	if (CharList.size() > 1)
 	{
-		CharList[0].position.x = Beta.x;
-		CharList[0].position.y = Beta.y;
-		CharList[1].position.x = Beta2.x;
-		CharList[1].position.y = Beta2.y;
-		squareSpeed = 0;
-	}
-	else
-	{
-		Beta.x = CharList[0].position.x;
-		Beta.y = CharList[0].position.y;
-		Beta2.x = CharList[1].position.x;
-		Beta2.y = CharList[1].position.y;
-		squareSpeed = 3;
-	}
-	for (int i = 0; i < BallList.size(); i++)
-	{
-		if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+		if (CharList[0].tank.getGlobalBounds().intersects(CharList[1].tank.getGlobalBounds()))
 		{
-			BallList[i].r = -BallList[i].r;
-			if (BallList[i].BallLife == 1)
-			{
-				BallList.erase(BallList.begin() + i);
-				break;
-			}
-			if (BallList[i].BallLife == 0)
-			{
-				BallList[i].BallLife += 1;
-			}
+			CharList[0].position.x = Beta.x;
+			CharList[0].position.y = Beta.y;
+			CharList[1].position.x = Beta2.x;
+			CharList[1].position.y = Beta2.y;
+			squareSpeed = 0;
 		}
-		if (WallList[1].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
-		{
-			BallList[i].r = -BallList[i].r;
-			if (BallList[i].BallLife == 1)
-			{
-				BallList.erase(BallList.begin() + i);
-				break;
-			}
-			if (BallList[i].BallLife == 0)
-			{
-				BallList[i].BallLife += 1;
-			}
-		}
-		if (WallList[2].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
-		{
-			BallList[i].u = -BallList[i].u;
-			if (BallList[i].BallLife == 1)
-			{
-				BallList.erase(BallList.begin() + i);
-				break;
-			}
-			if (BallList[i].BallLife == 0)
-			{
-				BallList[i].BallLife += 1;
-			}
-		}
-		if (WallList[3].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
-		{
-			BallList[i].u = -BallList[i].u;
-			if (BallList[i].BallLife == 1)
-			{
-				BallList.erase(BallList.begin() + i);
-				break;
-			}
-			if (BallList[i].BallLife == 0)
-			{
-				BallList[i].BallLife += 1;
-			}
-		}
-	}
 
+		else
+		{
+			Beta.x = CharList[0].position.x;
+			Beta.y = CharList[0].position.y;
+			Beta2.x = CharList[1].position.x;
+			Beta2.y = CharList[1].position.y;
+			squareSpeed = 3;
+		}
 
+		for (int i = 0; i < BallList.size(); i++)
+		{
+			if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[1].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[2].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[3].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (!CharList[0].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()) && !CharList[1].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				if (BallList[i].spawned == true)
+				{
+					BallList[i].spawned = false;
+				}
+			}
+			if (CharList[0].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				if (BallList[i].spawned == false)
+				{
+					printf("Hello");
+					CharList.erase(CharList.begin());
+				}
+			}
+			if (CharList.size() > 1)
+			{
+				if (CharList[1].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+				{
+					if (BallList[i].spawned == false)
+					{
+						CharList.erase(CharList.begin() + 1);
+					}
+				}
+			}
+		}
+
+	}
 }
 void drawWallet(sf::RenderWindow &win)
 {
@@ -174,7 +203,6 @@ void drawBall(sf::RenderWindow &win)
 {
 	for (Ball &Elem : BallList)
 	{
-
 		win.draw(Elem.ball);
 		Elem.ball.move(Elem.u/8, Elem.r/8);
 		
@@ -327,7 +355,7 @@ int main()
 
 				if (!Shoot && sf::Joystick::getAxisPosition(0,Joystick::Z)<-50)
 				{
-					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 15);
+					Ball Balle = Ball(sf::Vector2f(CharList[0].Viseur.getPosition().x-5,CharList[0].Viseur.getPosition().y), 15);
 					Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
 					Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
 					Balle.BallLife = 0;
@@ -375,9 +403,9 @@ int main()
 
 
 		window.clear();
+		drawBall(window);
 		drawWallet(window);
 		drawTank(window);
-		drawBall(window);
 		window.display();//ca dessine et ca attend la vsync
 
 	}
