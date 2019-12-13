@@ -1,25 +1,21 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
-enum EntityState
-{
+
+
+enum EntityState {
 	ES_IDLE,
+	ES_RUNNING,
 	ES_FALLING,
-	ES_MOVING,
+	ES_NEARWALL,
+	ES_COVER,
 };
+
 class Entity {
 public:
-	
-
-	Entity(sf::Shape * spr) {
-		this->spr = spr;
-	}
-
-	EntityState State = ES_IDLE;
-	int CX_W = 16;
-	int CX_H = 16;
+	int StateLife = 0;
+	const static int CELL_WIDTH = 16; // taille de chaque case width
 
 	int cx = 0;
 	int cy = 0;
@@ -27,139 +23,47 @@ public:
 	float rx = 0.5f;
 	float ry = 0.5f;
 
-	float dx = 0.01f;
-	float dy = 0.00f;
+	float dx = 0.0f;
+	float dy = 0.0f;
+
+	float gy = 0.03f;
 
 	float pixelX = 0.0;
 	float pixelY = 0.0;
 
-	float gy = 0.03f;
-	bool isInAir = false;
+	bool applyGravity = false;
 
-	bool WillColide(Entity * end,int cx, int cy)
-	{
-		int ScreenWidht = 1280/16;
-		int ScreenHeight = 720/16;
-		if (cx < 1) { return true; }
-		if (cx > ScreenWidht) { return true; }
-		if (cy < 0) { return true; }
-		if (cy > ScreenHeight) { return true; }
-		int i = 0;
-		return false;
-	}
 	sf::Shape * spr;
-	void Setpos(float crx, float cry)
-	{
+
+	Entity( sf::Shape * spr ) {
+		this->spr = spr;
+	}
+
+	void setPos(float crx, float cry) {
 		rx += crx;
-		
-		ry += cry;
+		ry += crx;
 	}
-	void SetPosPixel(float pixelX, float pixelY)
-	{
-		cx = pixelX / 16;
-		cy = pixelY / 16;
-		rx = (pixelX - (int)(cx*CX_W)) / CX_W;
-		ry = (pixelY - (int)(cy*CX_W)) / CX_W;
+	void updateState();
+	void setPosPixel(float pixelX, float pixelY);
 
-		SyncCoord();
+	void update(double dt);
+	void UpdateControls();
+	void dropParticles();
+	void syncCoord() {
+		pixelX = cx * CELL_WIDTH + rx * CELL_WIDTH;
+		pixelY = cy * CELL_WIDTH + ry * CELL_WIDTH;
+		spr->setPosition(pixelX, pixelY );
 	}
-	void update(double dt) {
 
-		rx += dx;
-		ry += dy;
-		if (dx > 0)
-		{
-			while (rx > 1)
-			{
-				if (!WillColide(this, cx+2.5,cy))
-				{
-					rx--;
-					cx++;
-				}
-				else
-				{
-					dx = -dx * 1;
-					//rx = 0.9;
-					break;
-				}
-			}
+	void draw(sf::RenderWindow & win);
 
-		}
-		else if (dx < 0)
-		{
-			while (rx < 0)
-			{
-				if (!WillColide(this, cx - 1, cy))
-				{
-					rx++;
-					cx--;
-				}
-				else
-				{
-					dx = -dx * 1;
-					//rx = 0.1;
-					break;
-				}
-			}
-		}
-		if (dy > 0)
-		{
-			while (ry > 1)
-			{
-				if (!WillColide(this, cx, cy+2))
-				{
-					ry--;
-					cy++;
-				}
-				else
-				{
-					isInAir = false;
-					State = ES_IDLE;
-					dy = 0;
-					ry = 0.9;
-					break;
-				}
-			}
-		}
-		dx *= 0.92;
-		if (abs(dx) < 0.05)
-		{
-			dx = 0;
-		}
-		if (isInAir) dy += gy;
-		ry += dy;
-		if (dy >= 1.0f)
-		{
-			dy = 1.0f;
-		}
-		SyncCoord();
-	}
-	void SyncCoord()
-	{
-		rx += dx;
-		pixelX = cx * CX_W + rx * CX_W;
-		pixelY = cy * CX_W + ry * CX_W;
-		spr->setPosition(pixelX, pixelY);
-	}
-	void draw(sf::RenderWindow & win) {
-		win.draw(*spr);
-	}
-	void changeState(EntityState nes)
-	{
-		EntityState oldState = State;
+	EntityState getState() { return state; };
+	void		changeState(EntityState nes);
 
-		switch (oldState)
-		{
-		default:
-			break;
-		}
+	bool		willCollide(int cx, int cy);
 
-		switch (nes)
-		{
-		default:
-			break;
-		}
+	std::string getStateName();
 
-		State = nes;
-	}
+private:
+	EntityState	state = ES_IDLE;
 };

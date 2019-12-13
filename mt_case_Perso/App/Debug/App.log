@@ -1,0 +1,59 @@
+﻿  App.cpp
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(59): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(60): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(74): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(145): warning C4305: '*=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(146): warning C4305: '*=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(177): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(183): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\fadingparticle.h(18): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(209): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(212): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(213): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(217): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(220): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(221): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(238): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(355): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(361): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(376): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(377): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\app.cpp(390): warning C4244: 'argument' : conversion de 'double' en 'float32', perte possible de données
+  Game.cpp
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(59): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(60): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(74): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(145): warning C4305: '*=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(146): warning C4305: '*=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(177): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+c:\workspace\hae_mickael_gp2\mt_case_perso\app\entity.hpp(183): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+  Génération de code en cours...
+  App.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\mt_case_Perso\App\Debug\App.exe

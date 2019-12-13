@@ -27,8 +27,6 @@ public:
 		if (texture) {
 			tank.setTexture(texture);
 			tank.setFillColor(sf::Color::White);
-
-
 		}
 		if (textureViseur)
 		{

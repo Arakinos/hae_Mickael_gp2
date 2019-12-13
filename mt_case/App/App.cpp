@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <direct.h>
 #include <functional>
+
 #include "Entity.hpp"
 #include "Lib.hpp"
 #include "Game.hpp"
@@ -13,7 +14,6 @@
 #include "FadingParticle.h"
 #include "Action.hpp"
 #include <Box2D/Box2D.h>
-
 
 using namespace sf;
 
@@ -117,7 +117,7 @@ static RectangleShape shp;
 static RectangleShape walls[4];
 
 int main() {
-	
+
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
 	
@@ -219,7 +219,9 @@ int main() {
 	walls[3].setFillColor(c);
 	walls[3].setPosition(0, winHeight - 1);
 	walls[3].setSize(Vector2f(winWidth, 16));
-	g.Init();
+
+	g.init();
+
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
 		sf::Event event;//recup les evenement clavier/pad
@@ -231,6 +233,16 @@ int main() {
 			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
 			switch (event.type ) {
+
+				case sf::Event::MouseButtonPressed:
+				{
+					auto CW = Entity::CELL_WIDTH;
+					int cx = mousePos.x / CW;
+					int cy = mousePos.y / CW;
+
+					Game::me->togglePlatform(cx, cy);
+					break;
+				}
 
 				case sf::Event::MouseMoved :
 				{
@@ -299,11 +311,11 @@ int main() {
 						showSegment++;
 					}
 
-					/*if (event.key.code == sf::Keyboard::Space) {
+					if (event.key.code == sf::Keyboard::Space) {
 						mainView = initialView;
 						mainView.move(Vector2f(Lib::dice(-8, 8), Lib::dice(-8, 8)));
 						window.setView(mainView);
-					}*/
+					}
 					break;
 
 				case sf::Event::Closed:
@@ -316,6 +328,7 @@ int main() {
 		}
 
 		
+
 
 		sf::Time dt = deltaClock.restart();
 
