@@ -69,10 +69,18 @@ sf::Text VictoryText;
 void Startwin(sf::RenderWindow &win,int NPlayer)
 {
 	std::string Player;
-	VictoryText.setFillColor(sf::Color::Red);
+
 	VictoryText.setCharacterSize(100);
-	if (NPlayer == 1) Player = "Bleu";
-	if (NPlayer == 2) Player = "Rouge";
+	if (NPlayer == 1)
+	{
+		VictoryText.setFillColor(sf::Color::Blue);
+		Player = "Bleu";
+	}
+	if (NPlayer == 2)
+	{
+		VictoryText.setFillColor(sf::Color::Red);
+		Player = "Rouge";
+	}
 	VictoryText.setString("Victoire du joueur " + Player);
 	FloatRect Alpha = VictoryText.getLocalBounds();
 	VictoryText.setOrigin(Vector2f(Alpha.width/2,Alpha.height/2));
@@ -191,6 +199,7 @@ void world(sf::RenderWindow &win)
 						printf("Hello");
 						Startwin(win, 2);
 						CharList.erase(CharList.begin());
+						break;
 					}
 				}
 
@@ -310,17 +319,23 @@ int main()
 			if (sf::Joystick::isConnected(0))
 			{
 				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (x > 25)
 				{
+					CharList[0].tank.setRotation(-angle);
 					CharList[0].position.x += squareSpeed;
 				}
 
 			}
 			if (sf::Joystick::isConnected(1))
 			{
-				float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (x > 25)
 				{
+					CharList[1].tank.setRotation(-angle);
 					CharList[1].position.x += squareSpeed;
 				}
 
@@ -328,8 +343,11 @@ int main()
 			if (sf::Joystick::isConnected(0))
 			{
 				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (x < -25)
 				{
+					CharList[0].tank.setRotation(-angle);
 					CharList[0].position.x -= squareSpeed;
 
 				}
@@ -337,9 +355,12 @@ int main()
 			}
 			if (sf::Joystick::isConnected(1))
 			{
-				float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (x < -25)
 				{
+					CharList[1].tank.setRotation(-angle);
 					CharList[1].position.x -= squareSpeed;
 
 				}
@@ -347,9 +368,12 @@ int main()
 			}
 			if (sf::Joystick::isConnected(0))
 			{
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
 				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (y > 25)
 				{
+					CharList[0].tank.setRotation(-angle);
 					CharList[0].position.y += squareSpeed;
 
 				}
@@ -357,9 +381,12 @@ int main()
 			}
 			if (sf::Joystick::isConnected(1))
 			{
-				float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (y > 25)
 				{
+					CharList[1].tank.setRotation(-angle);
 					CharList[1].position.y += squareSpeed;
 
 				}
@@ -367,19 +394,24 @@ int main()
 			}
 			if (sf::Joystick::isConnected(0))
 			{
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
 				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (y < -25)
 				{
-					Alpha = CharList[0].position;
+					CharList[0].tank.setRotation(-angle);
 					CharList[0].position.y -= squareSpeed;
 				}
 
 			}
 			if (sf::Joystick::isConnected(1))
 			{
-				float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+				float angle = (atan2(x, y) * 180 / 3.141592654);
 				if (y < -25)
 				{
+					CharList[1].tank.setRotation(-angle);
 					CharList[1].position.y -= squareSpeed;
 				}
 
@@ -445,10 +477,11 @@ int main()
 		}
 #pragma endregion
 		window.clear();
-		window.draw(VictoryText);
+
 		drawBall(window);
 		drawWallet(window);
 		drawTank(window);
+		window.draw(VictoryText);
 		window.display();//ca dessine et ca attend la vsync
 
 	}
