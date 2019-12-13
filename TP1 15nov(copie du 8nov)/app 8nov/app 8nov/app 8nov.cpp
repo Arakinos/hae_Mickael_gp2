@@ -444,7 +444,6 @@ int main()
 			}
 		}
 #pragma endregion
-
 		window.clear();
 		window.draw(VictoryText);
 		drawBall(window);
