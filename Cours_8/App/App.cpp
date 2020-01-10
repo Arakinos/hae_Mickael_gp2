@@ -113,15 +113,15 @@ static Vector2f p0;
 static Vector2f p1;
 
 static RectangleShape shp;
-
+static sf::VertexArray dijline;
 static RectangleShape walls[4];
 
 int main() {
 
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
-	
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!", sf::Style::Default , settings);
+
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!", sf::Style::Default, settings);
 	window.setVerticalSyncEnabled(true);
 
 	sf::View initialView = window.getDefaultView();
@@ -160,13 +160,13 @@ int main() {
 	blurShader = new Shader();
 	if (!blurShader->loadFromFile("res/simple.vert", "res/blur.frag"))
 		printf("unable to load shaders\n");
-	
-	
+
+
 	whiteTex = new Texture();
 	if (!whiteTex->create(1, 1)) printf("tex crea failed\n");
 	whiteTex->setSmooth(true);
 	unsigned int col = 0xffffffff;
-	whiteTex->update((const sf::Uint8*)&col,1,1,0,0);
+	whiteTex->update((const sf::Uint8*)&col, 1, 1, 0, 0);
 
 	sf::Texture testTex;
 	//testTex.create(256, 256);
@@ -193,9 +193,9 @@ int main() {
 
 	sf::Clock deltaClock;
 
-	sf::Color bgColor(7,15,33);
+	sf::Color bgColor(7, 15, 33);
 	char windowTitle[256] = "maWindow";
-	float color[3] = { bgColor.r/255.0f, bgColor.g / 255.0f, bgColor.b / 255.0f };
+	float color[3] = { bgColor.r / 255.0f, bgColor.g / 255.0f, bgColor.b / 255.0f };
 
 	ActionList al;
 	double winWidth = window.getSize().x;
@@ -221,127 +221,149 @@ int main() {
 	walls[3].setSize(Vector2f(winWidth, 16));
 
 	g.init();
-
+	dijline = sf::VertexArray(sf::PrimitiveType::LineStrip);
+	bool dijlineDrawable = true;
+	dijline.clear();
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
 		sf::Event event;//recup les evenement clavier/pad
 		frameStart = clock.getElapsedTime();
 		window.setView(initialView);
 
-		while (window.pollEvent(event))	{
+		while (window.pollEvent(event)) {
 
 			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
-			switch (event.type ) {
+			switch (event.type) {
 
-				case sf::Event::MouseButtonPressed:
+			case sf::Event::MouseButtonPressed:
+			{
+				auto CW = Entity::CELL_WIDTH;
+				int cx = mousePos.x / CW;
+				int cy = mousePos.y / CW;
+
+				Game::me->togglePlatform(cx, cy);
+				break;
+			}
+
+			case sf::Event::MouseMoved:
+			{
+				int life = 30;
+				float sp = Lib::rd() + 0.5;
 				{
-					auto CW = Entity::CELL_WIDTH;
-					int cx = mousePos.x / CW;
-					int cy = mousePos.y / CW;
+					auto c = new CircleShape(8, 64);
+					c->setOrigin(8, 8);
+					c->setPosition(mousePos);
+					c->setFillColor(sf::Color(0xFF5C371a));
+					auto p = new FadingParticle(c);
+					p->life = 30;
+					p->speed.y = sp;
+					p->bhv = Particle::applySpeed;
+					g.pvec.push_back(p);
 
-					Game::me->togglePlatform(cx, cy);
-					break;
 				}
 
-				case sf::Event::MouseMoved :
 				{
-					int life = 30;
-					float sp = Lib::rd() + 0.5;
-					{
-						auto c = new CircleShape(8, 64);
-						c->setOrigin(8, 8);
-						c->setPosition(mousePos);
-						c->setFillColor(sf::Color(0xFF5C371a));
-						auto p = new FadingParticle(c);
-						p->life = 30;
-						p->speed.y = sp;
-						p->bhv = Particle::applySpeed;
-						g.pvec.push_back(p);
-						
-					}
+					auto c = new CircleShape(2, 32);
+					c->setOrigin(2, 2);
+					c->setPosition(mousePos);
+					c->setFillColor(sf::Color(0xE88A38ff));
 
-					{
-						auto c = new CircleShape( 2,32);
-						c->setOrigin(2, 2);
-						c->setPosition(mousePos);
-						c->setFillColor(sf::Color(0xE88A38ff));
-
-						auto p = new FadingParticle(c);
-						p->life = 30;
-						p->speed.y = sp;
-						p->bhv = Particle::applySpeed;
-						g.pvec.push_back(p);
-					}
-					
-					break;
+					auto p = new FadingParticle(c);
+					p->life = 30;
+					p->speed.y = sp;
+					p->bhv = Particle::applySpeed;
+					g.pvec.push_back(p);
 				}
+				if (g.dijo.computed)
+				{
+					std::vector<Vector2f> result;
+					bool found = g.dijo.FindPath(result, Vector2f(
+						(int)(mousePos.x / Entity::CELL_WIDTH),
+						(int)(mousePos.y / Entity::CELL_WIDTH)));
 
-				case sf::Event::Resized:
-					initialView.setSize({
-									   static_cast<float>(event.size.width),
-									   static_cast<float>(event.size.height)
-						});
-					window.setView(initialView);
-					winTex.create(window.getSize().x, window.getSize().y);
-					delete destX;
-					destX = new sf::RenderTexture();
-					destX->create(window.getSize().x, window.getSize().y);
-					destX->clear(sf::Color(0, 0, 0, 0));
-					delete destFinal;
-					destFinal = new sf::RenderTexture();
-					destFinal->create(window.getSize().x, window.getSize().y);
-					destFinal->clear(sf::Color(0, 0, 0, 0));
-					break;
-
-				case sf::Event::KeyReleased:
-					if (event.key.code == sf::Keyboard::F9)
+					dijline.clear();
+					if (found) {
+						for (const sf::Vector2f & vtx : result)
+							dijline.append(
+								sf::Vertex(
+									sf::Vector2f(
+									(vtx.x + 0.5) * Entity::CELL_WIDTH,
+										(vtx.y + 0.5) * Entity::CELL_WIDTH), sf::Color::Red));
+						dijlineDrawable = true;
+					}
+					else
 					{
-						std::vector<Vector2f> graph;
-						for (int x = 0; x < 20; x++)
-						{
-							for (int y = 0; y < 20; y++)
-							{
+						dijlineDrawable = false;
+					}
+				}
+				break;
+			}
+			case sf::Event::Resized:
+				initialView.setSize({
+								   static_cast<float>(event.size.width),
+								   static_cast<float>(event.size.height)
+					});
+				window.setView(initialView);
+				winTex.create(window.getSize().x, window.getSize().y);
+				delete destX;
+				destX = new sf::RenderTexture();
+				destX->create(window.getSize().x, window.getSize().y);
+				destX->clear(sf::Color(0, 0, 0, 0));
+				delete destFinal;
+				destFinal = new sf::RenderTexture();
+				destFinal->create(window.getSize().x, window.getSize().y);
+				destFinal->clear(sf::Color(0, 0, 0, 0));
+				break;
+
+			case sf::Event::KeyReleased:
+				if (event.key.code == sf::Keyboard::F9)
+				{
+					std::vector<Vector2f> graph;
+					int size = 30;
+					for (int x = g.player->cx - 10; x < g.player->cx + 10; x++) {
+						for (int y = g.player->cy - 10; y < g.player->cy + 10; y++) {
+							if (!g.willCollide(x, y))
 								graph.push_back(Vector2f(x, y));
-							}
 						}
-						g.dijo.Dijkstrak(graph, Vector2f(10, 10));
-						std::vector<Vector2f> Alpha; 
-						g.dijo.FindPath(Alpha, Vector2f(13, 13));
-						int i = 0;
 					}
-					break;
+					printf("len:%d\n", graph.size());
+					g.dijo.Dijkstrak(graph, Vector2f(g.player->cx, g.player->cy));
+					printf("computed\n");
+				}
+				break;
 
-				case sf::Event::KeyPressed:
-					if (event.key.code == sf::Keyboard::F1) {
-						p0.x = mousePos.x;
-						p0.y = mousePos.y;
-						showSegment++;
-					}
 
-					if (event.key.code == sf::Keyboard::F2) {
-						p1.x = mousePos.x;
-						p1.y = mousePos.y;
-						showSegment++;
-					}
+			case sf::Event::KeyPressed:
+				if (event.key.code == sf::Keyboard::F1) {
+					p0.x = mousePos.x;
+					p0.y = mousePos.y;
+					showSegment++;
+				}
 
-					if (event.key.code == sf::Keyboard::Space) {
-						mainView = initialView;
-						mainView.move(Vector2f(Lib::dice(-8, 8), Lib::dice(-8, 8)));
-						window.setView(mainView);
-					}
-					break;
+				if (event.key.code == sf::Keyboard::F2) {
+					p1.x = mousePos.x;
+					p1.y = mousePos.y;
+					showSegment++;
+				}
 
-				case sf::Event::Closed:
-					window.close();
-					break;
+				if (event.key.code == sf::Keyboard::Space) {
+					mainView = initialView;
+					mainView.move(Vector2f(Lib::dice(-8, 8), Lib::dice(-8, 8)));
+					window.setView(mainView);
+				}
+				break;
 
-				default:
-					break;
+			case sf::Event::Closed:
+				window.close();
+				break;
+
+			default:
+				break;
 			}
 		}
 
-		
+
 
 
 		sf::Time dt = deltaClock.restart();
@@ -361,7 +383,7 @@ int main() {
 		g.update(dt.asSeconds());
 		al.update(dt.asSeconds());
 
-		window.clear( sf::Color(3,8,10) );//nettoie la frame
+		window.clear(sf::Color(3, 8, 10));//nettoie la frame
 
 		/////////////
 		/////////////
@@ -385,7 +407,7 @@ int main() {
 			sh.setPosition(p0.x, p0.y);
 			double angle = atan2(p1.y - p0.y, p1.x - p0.x);
 			angle -= Lib::PI * 0.5;
-			sh.setRotation( angle / (2.0 * 3.14156) * 360.0);
+			sh.setRotation(angle / (2.0 * 3.14156) * 360.0);
 			window.draw(sh);
 
 			sf::RectangleShape origin;
@@ -393,7 +415,7 @@ int main() {
 			origin.setSize(Vector2f(4, 4));
 			origin.setPosition(p0.x, p0.y);
 			window.draw(origin);
-			
+
 			Vector2f speed = p1 - p0;
 			b2Vec2 inter;
 			b2Vec2 normal;
@@ -431,7 +453,10 @@ int main() {
 		for (int i = 0; i < 4; ++i) {
 			window.draw(walls[i]);
 		}
-
+		if (dijlineDrawable)
+		{
+			window.draw(dijline);
+		}
 		window.draw(myFpsCounter);
 
 		///Draw all bloomed before this
@@ -439,7 +464,7 @@ int main() {
 			winTex.update(window);
 			destX->clear(sf::Color(0, 0, 0, 255));
 			destFinal->clear(sf::Color(0, 0, 0, 255));
-			blur(blurWidth, &winTex, blurShader, destX,destFinal);
+			blur(blurWidth, &winTex, blurShader, destX, destFinal);
 			sf::Sprite sp(destFinal->getTexture());
 			sf::RenderStates rs;
 
@@ -447,20 +472,20 @@ int main() {
 
 			bloomShader->setUniform("texture", destFinal->getTexture());
 			bloomShader->setUniform("bloomPass", 0.6f);
-			bloomShader->setUniform("bloomMul", sf::Glsl::Vec4(1.3f,1.3f,1.0f, 1.0f) );
+			bloomShader->setUniform("bloomMul", sf::Glsl::Vec4(1.3f, 1.3f, 1.0f, 1.0f));
 
 			rs.shader = bloomShader;
 			sf::Color c = sp.getColor();
-			c.a =(int)(c.a* 0.8);
+			c.a = (int)(c.a* 0.8);
 			sp.setColor(c);
 
-			window.draw(sp,rs);
+			window.draw(sp, rs);
 			blurWidth += (1.0f / 60.0f) * 2;
 
 			if (blurWidth >= 64)
 				blurWidth = 54;
 		}
-		
+
 		window.display();//ca dessine et ca attend la vsync
 
 		fps[step % 4] = 1.0f / (frameStart - prevFrameStart).asSeconds();
@@ -471,4 +496,4 @@ int main() {
 
 
 	return 0;
-}
+};

@@ -20,6 +20,7 @@ namespace std
 class Dijkstra
 {
 public:
+	bool	computed = false;
 	std::vector<Vector2f> G;
 	Vector2f start;
 	std::unordered_map<Vector2f, double> distance;
@@ -57,7 +58,7 @@ public:
 	{
 		int mini = 9999999;
 		int pos = -1;
-		int possave;
+		int possave = 0;
 		Vector2f sommet = Vector2f(-1, -1);
 		for (const Vector2f& vec : queue)
 		{
@@ -105,27 +106,27 @@ public:
 				}
 			}
 		}
+		computed = true;
 	}
 	bool FindPath(std::vector<Vector2f>& result, const Vector2f sFin)
 	{
 		result.clear();
-		Vector2f S = sFin;
-		while (S != start)
-		{
-			result.push_back(S);
-			S = pred[S];
+		Vector2f cur = sFin;
+		while (cur != start) {
+			result.push_back(cur);
+			Vector2f prev = cur;
+			cur = pred[cur];
+			if (prev == cur)
+				return false;
 		}
-		std::reverse(result.begin(), result.end());
-		Show();
-		return true;
-	}
-	void Show()
-	{
-		for (int i = 0; i < pred.size(); i++)
-		{
-
+		if (result.size() == 0) {
+			return false;
 		}
-
+		else {
+			result.push_back(start);
+			std::reverse(result.begin(), result.end());
+			return true;
+		}
 	}
 };
 

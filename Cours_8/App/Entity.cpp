@@ -233,7 +233,7 @@ void Entity::changeState(EntityState nes)
 
 bool Entity::willCollide(int cx, int cy)
 {
-	return Game::me->willCollide(this, cx, cy);
+	return Game::me->willCollide(cx, cy);
 }
 
 std::string Entity::getStateName() {

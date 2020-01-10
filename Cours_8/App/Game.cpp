@@ -30,34 +30,7 @@ void Game::makePlatforms() {
 	int cScreenHeight = 720 / Entity::CELL_WIDTH;
 
 
-	for (int a = 8; a < 15; a++)
-	{
-		for (int i = 8; i < 15; i++)
-		{
-			platforms.push_back(Vector2i(a, cScreenHeight - i));
-		}
-	}
-	for (int a = 20; a < 35; a++)
-	{
-		for (int i = 15; i < 50; i++)
-		{
-			platforms.push_back(Vector2i(a, cScreenHeight - i));
-		}
-	}
-	for (int a = 50; a < 55; a++)
-	{
-		for (int i = 8; i < 18; i++)
-		{
-			platforms.push_back(Vector2i(a, cScreenHeight - i));
-		}
-	}
-	for (int a = 65; a < 80; a++)
-	{
-		for (int i = 25; i < 35; i++)
-		{
-			platforms.push_back(Vector2i(a, cScreenHeight - i));
-		}
-	}
+	
 }
 
 
@@ -107,7 +80,7 @@ void Game::draw(RenderWindow & win)
 	//win.draw(line);
 }
 
-bool Game::willCollide(Entity * end, int cx, int cy)
+bool Game::willCollide(int cx, int cy)
 {
 	int cScreenWidth = 1280 / Entity::CELL_WIDTH;
 	int cScreenHeight = 720/ Entity::CELL_WIDTH;
