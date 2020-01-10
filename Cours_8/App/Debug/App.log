@@ -1,0 +1,102 @@
+﻿  App.cpp
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(49): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(67): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(124): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\hae_mickael_gp2\cours_8\app\fadingparticle.h(18): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(209): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(212): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(213): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(217): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(220): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(221): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(240): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(241): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(250): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(305): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(330): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(382): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(388): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(403): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(404): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\app.cpp(417): warning C4244: 'argument' : conversion de 'double' en 'float32', perte possible de données
+  Dijkstra.cpp
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(49): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(67): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(124): warning C4018: '<' : incompatibilité signed/unsigned
+  Entity.cpp
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(49): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(67): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(124): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\hae_mickael_gp2\cours_8\app\fadingparticle.h(18): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(71): warning C4305: '=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(89): warning C4305: '=' : troncation de 'double' à 'float'
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(112): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(113): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(116): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(117): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(121): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(122): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(126): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(127): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(145): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+  Game.cpp
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(49): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(67): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\hae_mickael_gp2\cours_8\app\dijkstra.h(124): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\hae_mickael_gp2\cours_8\app\game.cpp(86): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\hae_mickael_gp2\cours_8\app\game.cpp(88): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  Génération de code en cours...
+c:\workspace\hae_mickael_gp2\cours_8\app\entity.cpp(252): warning C4715: 'Entity::getStateName' : les chemins de contrôle ne retournent pas tous une valeur
+  App.vcxproj -> C:\WorkSpace\hae_Mickael_gp2\Cours_8\App\Debug\App.exe
