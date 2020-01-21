@@ -12,7 +12,7 @@
 #include "Entity.h"
 #include "Ball.h"
 #include "Wall.h"
-#include <Box2D/Box2D.h>
+
 #include <iostream>
 
 using namespace sf;

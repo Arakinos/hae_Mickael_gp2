@@ -1,17 +1,72 @@
 ﻿  pch.cpp
   app 8nov.cpp
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(46): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(48): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(49): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(50): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(51): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(359): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(375): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(392): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(409): warning C4551: liste d'arguments manquante dans l'appel de fonction
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(43): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(44): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(45): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(46): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(48): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(87): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(284): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(285): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(286): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(287): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(287): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(323): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(335): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(347): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(360): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(373): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(386): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(399): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(411): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(419): warning C4551: liste d'arguments manquante dans l'appel de fonction
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(426): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(449): warning C4551: liste d'arguments manquante dans l'appel de fonction
+d:\workspace\hae_mickael_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(455): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
   Ball.cpp
   Entity.cpp
   Lib.cpp
+  Wall.cpp
   Génération de code en cours...
-sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(769,9): error MSB4030: "D:\WorkSpace\hae_Mickael_gp2\SFML-2.5.1\lib" n'est pas une valeur valide pour le paramètre "LinkIncremental" de la tâche "Link". Le paramètre "LinkIncremental" est de type "System.Boolean".
