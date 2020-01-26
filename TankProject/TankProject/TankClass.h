@@ -18,21 +18,23 @@ class TankClass
 			tank.setSize(size);
 			tank.setOrigin(Vector2f((size.x / 2), (size.y / 2)));
 			position = pos;
-			tank.setFillColor(sf::Color::Magenta);
+			//tank.setFillColor(sf::Color::Magenta);
 			tank.setPosition(pos);
 			Viseur.setSize(sf::Vector2f(20, 50));
 			Viseur.setOrigin((Viseur.getSize().x / 2), 0);
-			//texture = tex;
-			// = texV;
-			/*if (texture) {
+			texture = tex;
+			textureViseur = texV;
+			if (texture) {
 				tank.setTexture(texture);
-				tank.setFillColor(sf::Color::White);
+			//	tank.setFillColor(sf::Color::White);
 			}
+			tank.setTexture(texture);
 			if (textureViseur)
 			{
 				Viseur.setTexture(textureViseur);
 				Viseur.setFillColor(sf::Color::White);
-			}*/
+			}
+			Viseur.setTexture(textureViseur);
 		};
 		TankClass()
 		{

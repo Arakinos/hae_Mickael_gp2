@@ -1,8 +1,6 @@
-﻿  TankProject.cpp
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(37): warning C4018: '<' : incompatibilité signed/unsigned
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(68): warning C4018: '<' : incompatibilité signed/unsigned
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(70): warning C4018: '<' : incompatibilité signed/unsigned
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(229): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+﻿  TankClass.cpp
+  TankProject.cpp
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(58): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -11,7 +9,11 @@ d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(229): warni
           [
               T=float
           ]
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(230): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(63): warning C4018: '<' : incompatibilité signed/unsigned
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(94): warning C4018: '<' : incompatibilité signed/unsigned
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(96): warning C4018: '<' : incompatibilité signed/unsigned
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(167): warning C4018: '<' : incompatibilité signed/unsigned
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(354): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -20,12 +22,7 @@ d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(230): warni
           [
               T=float
           ]
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(231): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(232): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(355): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -34,13 +31,28 @@ d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(232): warni
           [
               T=float
           ]
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(232): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(356): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
               T=float
           ]
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(273): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(298): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(330): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(358): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(357): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(357): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(406): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(431): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(463): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\workspace\hae_mickael_gp2\tankproject\tankproject\tankproject.cpp(491): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+  Génération de code en cours...
   TankProject.vcxproj -> D:\WorkSpace\hae_Mickael_gp2\TankProject\Debug\TankProject.exe

@@ -16,6 +16,8 @@ sf::RectangleShape Button1;
 sf::Text Button1Text;
 sf::RectangleShape Button2;
 sf::Text Button2Text;
+sf::RectangleShape Button3;
+sf::Text Button3Text;
 sf::Font * font = new sf::Font();
 sf::RenderWindow window(sf::VideoMode(1920, 1080), "GameTank", sf::Style::Default, settings);
 TankClass Player1 = TankClass();
@@ -27,10 +29,34 @@ bool Shoot2 = false;
 bool Menu = true;
 bool InGame = false;
 bool GameIsInit = false;
+bool P2Alive = true;
+bool P1Alive = true;
+bool GameEnd = false;
 int squareSpeed = 3;
+sf::Text VictoryText;
 static std::vector<Ball> BallList;
 static std::vector<Wall> WallList;
 
+
+void Win()
+{
+	VictoryText.setCharacterSize(100);
+	std::string Player;
+	if (!P2Alive)
+	{
+		VictoryText.setFillColor(sf::Color::Blue);
+		Player = "Bleu";
+	}
+	if (!P1Alive)
+	{
+		VictoryText.setFillColor(sf::Color::Red);
+		Player = "Rouge";
+	}
+	VictoryText.setString("Victoire du joueur " + Player);
+	FloatRect Alpha = VictoryText.getLocalBounds();
+	VictoryText.setOrigin(Vector2f(Alpha.width / 2, Alpha.height / 2));
+	VictoryText.setPosition(Vector2f(window.getSize().x / 2, window.getSize().y - window.getSize().y / 1.1f));
+}
 void world()
 {
 
@@ -74,15 +100,15 @@ void world()
 				if (WallList[y].Orientation == "Up")
 				{
 					BallList[i].r = -BallList[i].r;
-				}
-				if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
-				{
-					BallList.erase(BallList.begin() + i);
-					break;
-				}
-				if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1 && BallList[i].spawned == false)
-				{
-					BallList[i].BallLife += 1;
+					if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
+					{
+						BallList.erase(BallList.begin() + i);
+						break;
+					}
+					if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1 && BallList[i].spawned == false)
+					{
+						BallList[i].BallLife += 1;
+					}
 				}
 			}
 			if (WallList[y].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
@@ -90,69 +116,155 @@ void world()
 				if (WallList[y].Orientation == "Down")
 				{
 					BallList[i].r = -BallList[i].r;
+					if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
+					{
+						BallList.erase(BallList.begin() + i);
+						break;
+					}
+					if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1 && BallList[i].spawned == false)
+					{
+						BallList[i].BallLife += 1;
+					}
 				}
-				if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
-				{
-					BallList.erase(BallList.begin() + i);
-					break;
-				}
-				if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1 && BallList[i].spawned == false)
-				{
-					BallList[i].BallLife += 1;
-				}
+
 			}
 			if (WallList[y].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
 				if (WallList[y].Orientation == "Right")
 				{
 					BallList[i].u = -BallList[i].u;
+					if (BallList[i].BallLife == 1)
+					{
+						BallList.erase(BallList.begin() + i);
+						break;
+					}
+					if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1)
+					{
+						BallList[i].BallLife += 1;
+					}
 				}
-				if (BallList[i].BallLife == 1)
-				{
-					BallList.erase(BallList.begin() + i);
-					break;
-				}
-				if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1)
-				{
-					BallList[i].BallLife += 1;
-				}
+
 			}
 			if (WallList[y].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
 			{
 				if (WallList[y].Orientation == "Left")
 				{
 					BallList[i].u = -BallList[i].u;
+					if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
+					{
+						BallList.erase(BallList.begin() + i);
+						break;
+					}
+					if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1)
+					{
+						BallList[i].BallLife += 1;
+					}
 				}
-				if (BallList[i].BallLife == 1 && BallList[i].spawned == false)
-				{
-					BallList.erase(BallList.begin() + i);
-					break;
-				}
-				if (BallList[i].BallLife == 0 || BallList[i].BallLife == -1 && BallList[i].spawned == false)
-				{
-					BallList[i].BallLife += 1;
-				}
+				
 			}
 		}
-		/*if (WallList[0].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+	}
+	for (int i = 0; i < BallList.size(); i++)
+	{
+		if (BallList[i].ball.getGlobalBounds().intersects(Player1.tank.getGlobalBounds()))
 		{
-			BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 25));
-			BallList[i].r = -BallList[i].r;
-			if (BallList[i].BallLife == 1)
+			if (!BallList[i].spawned)
 			{
-				//BallList.erase(BallList.begin() + i);
-				break;
+				P1Alive = false;
+				Win();
 			}
-			if (BallList[i].BallLife == 0)
+		}
+		else
+		{
+			if (BallList[i].spawned)
 			{
-				BallList[i].BallLife += 1;
+				BallList[i].spawned = false;
 			}
-		}*/
+		}
+		if (BallList[i].ball.getGlobalBounds().intersects(Player2.tank.getGlobalBounds()))
+		{
+			P2Alive = false;
+			Win();
+		}
 	}
 }
 
 
-
+void End()
+{
+	Vector2i MousePos = sf::Mouse::getPosition();
+	Vector2f Alpha = Button3.getPosition();
+	Vector2f Beta = Button2.getPosition();
+	Button3Text.setString("Play");
+	Button3Text.setFillColor(sf::Color::White);
+	Button3Text.setFont(*font);
+	Button3Text.setPosition(Vector2f(Button3.getPosition().x - 23, Button3.getPosition().y - 20));
+#pragma region BoutonPlay
+	Button3.setSize(Vector2f(400, 100));
+	Button3.setOrigin(Vector2f(200, 50));
+	Button3.setPosition(Vector2f(960, 380));
+	if (MousePos.x >= Alpha.x - 200 && MousePos.x <= Alpha.x + 200 && MousePos.y >= Alpha.y - 20 && MousePos.y <= Alpha.y + 85)
+	{
+		Button1.setFillColor(sf::Color::Magenta);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			Shoot = false;
+			Shoot2 = false;
+			InGame = false;
+			GameIsInit = false;
+			P2Alive = true;
+			P1Alive = true;
+			GameEnd = false;
+			WallList.clear();
+			BallList.clear();
+			while (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				int i = 0;
+				i++;
+			}
+			Menu = true;
+		}
+	}
+	else
+	{
+		Button1.setFillColor(sf::Color::Blue);
+	}
+	Button2.setSize(Vector2f(400, 100));
+	Button2.setOrigin(Vector2f(200, 50));
+	Button2.setPosition(Vector2f(960, 700));
+	Button2Text.setString("Quit");
+	Button2Text.setFillColor(sf::Color::White);
+	Button2Text.setFont(*font);
+	Button2Text.setPosition(Vector2f(Button2.getPosition().x - 23, Button2.getPosition().y - 20));
+	if (MousePos.x >= Beta.x - 200 && MousePos.x <= Beta.x + 200 && MousePos.y >= Beta.y - 20 && MousePos.y <= Beta.y + 85)
+	{
+		Button2.setFillColor(sf::Color::Magenta);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			exit(0);
+		}
+	}
+	else
+	{
+		Button2.setFillColor(sf::Color::Blue);
+	}
+	if (MousePos.x >= Beta.x - 200 && MousePos.x <= Beta.x + 200 && MousePos.y >= Beta.y - 20 && MousePos.y <= Beta.y + 85)
+	{
+		Button2.setFillColor(sf::Color::Magenta);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			exit(0);
+		}
+	}
+	else
+	{
+		Button2.setFillColor(sf::Color::Blue);
+	}
+	window.draw(Button1);
+	window.draw(Button2);
+	window.draw(Button1Text);
+	window.draw(Button2Text);
+}
 void button()
 {
 
@@ -181,7 +293,11 @@ void button()
 	{
 		Button1.setFillColor(sf::Color::Blue);
 	}
+
 #pragma endregion
+#pragma region BoutonQuit
+
+
 	Button2.setSize(Vector2f(400, 100));
 	Button2.setOrigin(Vector2f(200, 50));
 	Button2.setPosition(Vector2f(960, 700));
@@ -201,52 +317,69 @@ void button()
 	{
 		Button2.setFillColor(sf::Color::Blue);
 	}
+
+#pragma endregion
+	VictoryText.setFont(*font);
 		window.draw(Button1);
 		window.draw(Button1Text);
 		window.draw(Button2);
 		window.draw(Button2Text);
+
 }
-void InitGame()
+	void InitGame()
 {
 	if (GameIsInit)
 	{
+		P1Alive = true;
+		P2Alive = true;
 		sf::Texture texture;
 		sf::Texture textureViseur;
 		sf::Texture textureR;
 		sf::Texture textureViseurR;
-		if(!texture.loadFromFile("res/tank sans canon bleu.png"))
+		if (!texture.loadFromFile("res/TankB.png"))
+		{
 			printf("pasTank");
-		if (!textureViseur.loadFromFile("res/canon tank bleu.png"))
+			texture.loadFromFile("res/TankB.png");
+		}
+		if (!textureViseur.loadFromFile("res/TurretB.png"))
 			printf("pasTank");
-		if (!textureR.loadFromFile("res/tank sans canon rouge.png"))
+		if (!textureR.loadFromFile("res/TankR.png"))
 			printf("pasTank");
-		if (!textureViseurR.loadFromFile("res/canon tank rouge.png"))
+		if (!textureViseurR.loadFromFile("res/TurretR.png"))
 			printf("pasTank");
 		Player1 = TankClass(Vector2f(150, 800), Vector2f(65, 65), &texture, &textureViseur);
-		//Player2 = TankClass(Vector2f(1200, 100), Vector2f(65, 65), &textureR, &textureViseurR);
+		Player2 = TankClass(Vector2f(1200, 100), Vector2f(65, 65), &textureR, &textureViseurR);
 		int height = window.getSize().y;
 		int width = window.getSize().x;
 		Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 10), "Up");
 		Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 10), "Down");
 		Wall Left = Wall(Vector2f(0, 0), Vector2f(10, height), "Left");
 		Wall Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(10, height), "Right");
+		Wall test = Wall(Vector2f(600, 600), Vector2f(100, 100), "Left");
+	//	test.wallet.setTexture(texture);
 		WallList.push_back(Up);
 		WallList.push_back(Down);
 		WallList.push_back(Left);
 		WallList.push_back(Right);
+		WallList.push_back(test);
 		GameIsInit = false;
 		InGame = true;
-
 	}
 }
 void DrawTank()
 {
-	window.draw(Player1.tank);
-	window.draw(Player1.Viseur);
-	window.draw(Player2.tank);
-	window.draw(Player2.Viseur);
-	Player1.SetPosition();
-	Player2.SetPosition();
+	if (P1Alive)
+	{
+		window.draw(Player1.tank);
+		window.draw(Player1.Viseur);
+		Player1.SetPosition();
+	}
+	if (P2Alive)
+	{
+		window.draw(Player2.tank);
+		window.draw(Player2.Viseur);
+		Player2.SetPosition();
+	}
 }
 void DrawBullet()
 {
@@ -337,7 +470,7 @@ void Fire()
 				Balle.spawned = true;
 				Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
 				Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
-				Balle.BallLife = -1;
+				Balle.BallLife = 0;
 				BallList.push_back(Balle);
 			}
 			if (sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
@@ -415,13 +548,22 @@ int main()
 		}
 		if (InGame)
 		{
+
 			world();
-			MoveTanks();
-			Fire();
+			if (!GameEnd)
+			{
+				MoveTanks();
+				Fire();
+			}
 			DrawBullet();
 			DrawTank();
 			DrawWall();
-
+			if (!P1Alive || !P2Alive)
+			{
+				GameEnd = true;
+				window.draw(VictoryText);
+				End();
+			}
 		}
 		window.display();//ca dessine et ca attend la vsync
 	}
